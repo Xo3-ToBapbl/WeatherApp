@@ -8,14 +8,19 @@ module.exports = (env) => {
   return {
     mode: envVars.mode,
     devtool: envVars.devtool,
+    devServer: {
+      open: false,
+      static: `./dist/${envName}`,
+    },
     entry: {
       index: envVars.entryPath
     },
     output: {
-      publicPath: '/',
+      publicPath: `/`,
       path: Path.resolve(process.cwd(), envVars.distPath),
       filename: envVars.outputScriptsPath,
       assetModuleFilename: envVars.assetsPath,
+      clean: true,
     },
   
     plugins: [

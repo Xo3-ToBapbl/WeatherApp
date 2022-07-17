@@ -1,0 +1,9 @@
+{
+  "mode": "development",
+  "entryPath": "./src/htmls/index.pug",
+  "distPath": "dist/dev/",
+  "devtool": "inline-source-map",
+  "outputScriptsPath": "scripts/[name].js",
+  "assetsPath": "resources/images/[name][ext]",
+  "stylesPath": "styles/[name].css"
+}

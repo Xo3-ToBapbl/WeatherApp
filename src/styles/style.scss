@@ -1,0 +1,11 @@
+@use 'reset';
+@use 'colors';
+@use 'variables';
+@use 'main';
+
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-color: #161629;
+}

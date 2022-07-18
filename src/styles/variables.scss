@@ -1,0 +1,44 @@
+:root {
+  --main-content-corner-radius: 10px;
+  --main-content-width: 1024px;
+  --main-content-height: 768px;
+  --main-content-margin: auto;
+  --main-content-item-grid-area: auto;
+  --main-content-display: grid;
+
+  --side-panel-container-width: 330px;
+  --side-panel-width: 330px;
+  --side-panel-height: 100%;
+  --side-panel-close-link-width: 0px;
+  --side-panel-container-transform: translateX(0);
+}
+
+@media only screen and (max-width: 1024px), (max-height: 800px) {
+  :root {
+    --main-content-corner-radius: 0px;
+    --main-content-width: 100%;
+    --main-content-height: 100vh;
+    --main-content-margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 876px) {
+  :root {
+    --main-content-item-grid-area: stacked;
+
+    --side-panel-container-width: 100%;
+    --side-panel-close-link-width: 100%;
+    --side-panel-container-transform: translateX(-110vw);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  :root {
+    --main-content-display: flex;
+
+    --side-panel-width: 100%;
+    --side-panel-height: 100vh;
+    --side-panel-container-width: 100%;
+    --side-panel-container-transform: translateX(0);
+  }
+}

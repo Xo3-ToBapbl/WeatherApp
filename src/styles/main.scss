@@ -1,5 +1,56 @@
-@use 'head';
+$easeOutTransform: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 
-div {
-  color: red;
+main {
+  display: var(--main-content-display);
+  grid: [stacked] 1fr / min-content [stacked] 1fr;
+  flex-direction: column;
+  height: var(--main-content-height);
+  width: var(--main-content-width);
+  margin: var(--main-content-margin);
+  border-radius: var(--main-content-corner-radius);
+  box-shadow: 2px 2px 7px 2px #0d0b1a;
+  background-color: var(--dark-blue);
+}
+
+.side-panel-container {
+  display: flex;
+  height: 100%;
+  width: var(--side-panel-container-width);
+  border-top-left-radius: var(--main-content-corner-radius);
+  border-bottom-left-radius: var(--main-content-corner-radius);
+  grid-area: var(--main-content-item-grid-area);
+  transform: var(--side-panel-container-transform);
+  transition: $easeOutTransform;
+  z-index: 3;
+
+  .side-panel {
+    height: var(--side-panel-height);
+    flex: 0 0 var(--side-panel-width); 
+    width: var(--side-panel-width);
+    border-top-left-radius: var(--main-content-corner-radius);
+    border-bottom-left-radius: var(--main-content-corner-radius);
+    background-color: var(--semi-blue);
+  }
+
+  .side-panel-close-link {
+    height: 100%;
+    width: var(--side-panel-close-link-width);
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--dark-blue);
+  border-top-right-radius: var(--main-content-corner-radius);
+  border-bottom-right-radius: var(--main-content-corner-radius);
+  grid-area: var(--main-content-item-grid-area);
+  z-index: 2;
+}
+
+#open-side-panel:target {
+  --side-panel-container-transform: 0;
+  transition: $easeOutTransform;
 }

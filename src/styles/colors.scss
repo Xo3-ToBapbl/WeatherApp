@@ -1,0 +1,17 @@
+:root {
+  --dark-blue: #100E1D;
+  --semi-blue: #1E213A;
+  --gray-blue: #585676;
+  --contrast-blue: #3C47E9;
+  --semi-white: #E7E7EB;
+  --light-gray: #A09FB1;
+  --semi-gray: #88869D;
+  --dark-gray: #6E707A;
+  --light-yellow: #FFEC65;
+
+  --body-background: var(--light-yellow);
+}
+
+:root[data-theme='dark'] {
+  --body-background: var(--dark-blue);
+}

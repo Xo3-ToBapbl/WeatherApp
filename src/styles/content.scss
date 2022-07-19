@@ -1,0 +1,12 @@
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 125px;
+  background-color: var(--main-content-background);
+  border-top-right-radius: var(--main-content-corner-radius);
+  border-bottom-right-radius: var(--main-content-corner-radius);
+  grid-area: var(--main-content-item-grid-area);
+  z-index: 2;
+}

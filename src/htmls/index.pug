@@ -4,8 +4,5 @@ html(lang='en', data-theme='dark')
 
   body
     main
-      aside.side-panel-container(id="open-side-panel")
-        div.side-panel
-        a.side-panel-close-link(href="#", onclick="window.history.back()")
-      div.content
-        a.open-side-panel(href="#open-side-panel") OPEN
+      include side-panel
+      include content

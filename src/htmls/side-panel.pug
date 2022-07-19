@@ -1,0 +1,29 @@
+aside.side-panel-container(id="open-side-panel")
+  div.side-panel
+    div.tool-bar
+      button.search-btn Search for places
+      button.material-icons.location-btn gps_fixed
+      button.material-icons.close-btn(onclick="window.history.back()") close
+      
+    div.weather-pics
+      img(src=require("../resources/images/shower.png"))
+      
+    div.main-temperature
+      p 15
+        span
+          sup o
+          | C
+    h2.main-temperature-description Shower
+    
+    div.today-date
+      p Today
+      p •
+      p Fri, 5 Jun
+      
+    div.location
+      p
+        span.material-icons.location-icon place
+        | 
+        span.city Helsinki
+
+  a.side-panel-close-link(href="#", onclick="window.history.back()")

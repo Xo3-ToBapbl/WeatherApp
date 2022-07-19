@@ -1,19 +1,33 @@
 :root {
+  --contentOffset: 30px;
+  --tool-bar-height: 40px;
+
+  --huge-text: 6.4rem;
+  --middle-text: 3.2rem;
+  --plain-text: 1.8rem;
+  --regular-text: 1.6rem;
+  --small-text: 1.4rem;
+
   --main-content-corner-radius: 10px;
-  --main-content-width: 1024px;
-  --main-content-height: 768px;
+  --main-content-width: 1368px;
+  --main-content-height: 864px;
   --main-content-margin: auto;
   --main-content-item-grid-area: auto;
   --main-content-display: grid;
 
-  --side-panel-container-width: 330px;
-  --side-panel-width: 330px;
+  --side-panel-container-width: 414px;
+  --side-panel-width: 414px;
   --side-panel-height: 100%;
   --side-panel-close-link-width: 0px;
   --side-panel-container-transform: translateX(0);
+  --side-panel-close-btn-display: none;
+
+  --toolbar-grid-column-template: 1fr auto;
+
+  --side-panel-transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media only screen and (max-width: 1024px), (max-height: 800px) {
+@media only screen and (max-width: 1368px), (max-height: 864px) {
   :root {
     --main-content-corner-radius: 0px;
     --main-content-width: 100%;
@@ -22,17 +36,20 @@
   }
 }
 
-@media only screen and (max-width: 876px) {
+@media only screen and (max-width: 1024px) {
   :root {
     --main-content-item-grid-area: stacked;
 
     --side-panel-container-width: 100%;
     --side-panel-close-link-width: 100%;
     --side-panel-container-transform: translateX(-110vw);
+    --side-panel-close-btn-display: inline-block;
+
+    --toolbar-grid-column-template: 1fr auto auto;
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 414px) {
   :root {
     --main-content-display: flex;
 
@@ -40,5 +57,8 @@
     --side-panel-height: 100vh;
     --side-panel-container-width: 100%;
     --side-panel-container-transform: translateX(0);
+    --side-panel-close-btn-display: none;
+
+    --toolbar-grid-column-template: 1fr auto;
   }
 }

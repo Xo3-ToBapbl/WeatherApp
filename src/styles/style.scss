@@ -2,10 +2,26 @@
 @use 'colors';
 @use 'variables';
 @use 'main';
+@use 'side-panel';
+@use 'content';
+
+@font-face {
+  font-family: raleway;
+  src: url("../resources/fonts/raleway.ttf");
+}
+
+button {
+  font-family: raleway, sans-serif;
+}
+
+html {
+  font-family: raleway, sans-serif;
+  font-size: 62.5%;
+}
 
 body {
+  display: flex;
   height: 100vh;
   width: 100%;
-  display: flex;
-  background-color: #161629;
+  background-color: var(--body-background);
 }

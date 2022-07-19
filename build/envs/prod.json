@@ -4,6 +4,6 @@
   "distPath": "dist/prod/",
   "devtool": false,
   "outputScriptsPath": "scripts/[name].[contenthash:8].js",
-  "assetsPath": "resources/images/[name].[contenthash:8][ext]",
+  "assetsPath": "resources/[name].[contenthash:8][ext]",
   "stylesPath": "styles/[name].[contenthash:8].css"
 }

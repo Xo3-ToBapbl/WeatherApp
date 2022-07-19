@@ -4,6 +4,6 @@
   "distPath": "dist/dev/",
   "devtool": "inline-source-map",
   "outputScriptsPath": "scripts/[name].js",
-  "assetsPath": "resources/images/[name][ext]",
+  "assetsPath": "resources/[name][ext]",
   "stylesPath": "styles/[name].css"
 }

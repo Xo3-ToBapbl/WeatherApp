@@ -1,8 +1,7 @@
 @use 'reset';
-@use 'colors';
-@use 'variables';
-@use 'main';
-@use 'side-panel';
+@use 'values/colors';
+@use 'values/variables';
+@use 'side-panels/side-panels-containers';
 @use 'content';
 
 @font-face {
@@ -10,8 +9,14 @@
   src: url("../resources/fonts/raleway.ttf");
 }
 
-button {
+button, input {
   font-family: raleway, sans-serif;
+}
+
+::placeholder {
+  color: var(--alternative-text-color);
+  opacity: 1;
+  font-weight: 100;
 }
 
 html {
@@ -24,4 +29,16 @@ body {
   height: 100vh;
   width: 100%;
   background-color: var(--body-background);
+}
+
+main {
+  display: var(--main-content-display);
+  grid: [stacked] 1fr / min-content [stacked] 1fr;
+  flex-direction: column;
+  height: var(--main-content-height);
+  width: var(--main-content-width);
+  margin: var(--main-content-margin);
+  border-radius: var(--main-content-corner-radius);
+  box-shadow: -2px 2px 7px 2px var(--main-content-shadow-color);
+  background-color: var(--main-content-background);
 }

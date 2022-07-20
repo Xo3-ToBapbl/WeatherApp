@@ -1,4 +1,4 @@
-1. Bash commands:
+1. Terminal commands:
 "npm run build -- --env prod" - run webpack build with 'prod' env cfg, if not specified 'dev' uses as default
 "npm run clean" - clean dist/* directory
 "npm run rebuild -- --env prod" - clean dist/* directory and run webpack build with 'prod' env cfg, if not specified 'dev' uses as default

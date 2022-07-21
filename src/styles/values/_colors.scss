@@ -30,9 +30,13 @@
   --main-text-color: var(--light-blue);
   --second-text-color: var(--gray-blue);  
   --alternative-text-color: var(--semi-gray);
+  --radio-btn-checked-text-color: var(--semi-white);
+  --radio-btn-unchecked-text-color: var(--dark-blue);
 
-  --btn-background: var(--semi-gray);
+  --panel-btn-background: var(--semi-gray);
   --btn-text-color: var(--semi-white);
+  --radio-btn-checked-background: var(--gray-blue);
+  --radio-btn-unchecked-background: var(--semi-white);  
 }
 
 :root[data-theme='dark'] {
@@ -47,7 +51,11 @@
   --main-text-color: var(--semi-white);
   --second-text-color: var(--light-gray);
   --alternative-text-color: var(--semi-gray);
+  --radio-btn-checked-text-color: var(--semi-white);
+  --radio-btn-unchecked-text-color: var(--dark-blue);
 
-  --btn-background: var(--dark-gray);
+  --panel-btn-background: var(--dark-gray);
   --btn-text-color: var(--semi-white);
+  --radio-btn-checked-background: var(--gray-blue);
+  --radio-btn-unchecked-background: var(--semi-white);
 }

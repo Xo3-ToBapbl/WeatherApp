@@ -5,11 +5,11 @@
   @include base-panel.panel;
 
   .tool-bar {
-    flex: 0 0 var(--tool-bar-height);
+    flex: 0 0 var(--toolbar-height);
     display: grid;
-    grid-template-rows: var(--tool-bar-height);
+    grid-template-rows: var(--toolbar-height);
     grid-template-columns: var(--toolbar-grid-column-template);
-    column-gap: calc(0.5 * var(--tool-bar-height));
+    column-gap: calc(0.5 * var(--toolbar-height));
     justify-content: space-between;
 
     .search-btn {
@@ -22,14 +22,14 @@
 
     .location-btn, .close-btn {
       @include base-panel.toolbar-btn;
-      @include base-panel.rounded-toolbar-btn;
+      @include general.rounded-toolbar-btn;
     }
 
     .close-btn {
       display: var(--side-panel-close-btn-display);
     }
 
-    @include base-panel.toolbar-btn-hover;
+    @include general.toolbar-btn-hover;
   }
 
   .weather-pics {

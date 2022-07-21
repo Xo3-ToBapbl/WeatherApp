@@ -1,4 +1,5 @@
 @use 'base-panel';
+@use '../general';
 
 .search-panel {
   @include base-panel.panel;
@@ -30,9 +31,9 @@
     
     .swap-panel-btn {
       @include base-panel.toolbar-btn;
-      @include base-panel.rounded-toolbar-btn;
+      @include general.rounded-toolbar-btn;
 
-      flex: 0 0 var(--tool-bar-height);
+      flex: 0 0 var(--toolbar-height);
     }
   }
 
@@ -73,5 +74,5 @@
     }
   }
 
-  @include base-panel.toolbar-btn-hover;
+  @include general.toolbar-btn-hover;
 }

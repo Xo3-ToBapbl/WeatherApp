@@ -1,2 +1,7 @@
 div.content
-  a.open-side-panel(href="#open-side-panel") OPEN
+  div.content-toolbar
+    div.menu-toolbar
+      button.material-icons.menu-btn(onclick="window.location.href='#open-side-panel'") menu
+      button.material-icons.theme-mode-btn(data-toggled='false' data-theme='light') light_mode
+      button.material-icons.theme-mode-btn(data-toggled='true' data-theme='dark') dark_mode
+    div.temperature-units-toolbar

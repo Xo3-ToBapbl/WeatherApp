@@ -39,6 +39,8 @@
   --radio-btn-unchecked-background: var(--semi-white);
 
   --forecast-card-background: var(--silver);
+
+  --progress-bar-background: var(--semi-white);
 }
 
 :root[data-theme='dark'] {
@@ -62,4 +64,6 @@
   --radio-btn-unchecked-background: var(--semi-white);
 
   --forecast-card-background: var(--semi-blue);
+  
+  --progress-bar-background: var(--semi-white);
 }

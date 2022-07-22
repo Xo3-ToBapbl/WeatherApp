@@ -15,14 +15,49 @@ div.content
           | F
 
   section.weak-forecast
-    div.day-forecast
-    div.day-forecast
-    div.day-forecast
-    div.day-forecast
-    div.day-forecast
+    - for (var x = 0; x < 5; x++)
+      div.day-forecast
+        h3.forecast-title Tomorrow
+        img(src=require("../resources/images/shower.png"))
+        div.day-forecast-temperature
+          p.max-temperature 16
+            span
+              sup o
+              | C
+          p.min-temperature 11
+            span
+              sup o
+              | C
+  h2.current-day-forecast-title Today’s Highlights 
 
   section.current-day-forecast
     div.weather-data
+      h3.forecast-title Wind status
+      p.value 7
+        span mph
+      p.description
+        span.material-icons near_me 
+        | WSW
+        
     div.weather-data
+      h3.forecast-title Humidity
+      p.value 84
+        span %
+      div.progress-bar-container
+        div.progress-bar-values
+          p 0
+          p 50
+          p 100
+        div.progress-bar-outer
+          div.progress-bar-inner
+        p %
+
     div.weather-data
+      h3.forecast-title Visibility
+      p.value 6,4
+        span miles
+
     div.weather-data
+      h3.forecast-title Air Pressure
+      p.value 998
+        span mb

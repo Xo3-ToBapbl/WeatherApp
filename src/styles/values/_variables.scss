@@ -15,6 +15,7 @@
   --main-content-margin: auto;
   --main-content-item-grid-area: auto;
   --main-content-display: grid;
+  --main-content-overflow: none;
 
   --side-panels-container-width: 414px;
   --side-panel-width: 414px;
@@ -25,8 +26,10 @@
 
   --content-horizontal-padding-ratio: 2;
   --content-grid-gap-ratio: 1;
+  --content-overflow: none;
 
   --toolbar-grid-column-template: 1fr auto;
+  --toolbar-sticky-top-offset: 0;
 
   --menu-btn-display: none;
 
@@ -39,17 +42,23 @@
     --main-content-width: 100%;
     --main-content-height: 100vh;
     --main-content-margin: 0px;
+    --main-content-overflow: none;
+
+    --content-overflow: auto;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   :root {
     --main-content-item-grid-area: stacked;
+    --main-content-overflow: none;
 
     --side-panels-container-width: 100%;
     --side-panel-close-link-width: 100%;
     --side-panels-container-transform: translateX(-110vw);
     --side-panel-close-btn-display: inline-block;
+
+    --content-overflow: auto;
 
     --toolbar-grid-column-template: 1fr auto auto;
 
@@ -60,6 +69,7 @@
 @media only screen and (max-width: 414px) {
   :root {
     --main-content-display: flex;
+    --main-content-overflow: auto;
 
     --side-panel-width: 100%;
     --side-panel-height: 100vh;
@@ -70,8 +80,10 @@
 
     --content-horizontal-padding-ratio: 0.5;
     --content-grid-gap-ratio: 0.5;
+    --content-overflow: none;
 
     --toolbar-grid-column-template: 1fr auto;
+    --toolbar-sticky-top-offset: calc(0.5 * var(--contentOffset));
 
     --menu-btn-display: none;
   }

@@ -12,9 +12,12 @@
   border-bottom-right-radius: var(--main-content-corner-radius);
   grid-area: var(--main-content-item-grid-area);
   z-index: 2;
+  overflow: var(--content-overflow);
 }
 
 .content-toolbar {
+  position: sticky;
+  top: var(--toolbar-sticky-top-offset);
   height: var(--toolbar-height);
   width: 100%;
   display: flex;

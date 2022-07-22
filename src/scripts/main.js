@@ -4,6 +4,7 @@ document.querySelector('.search-btn').onclick = () => swapSidePanel(180);
 document.querySelector('.swap-panel-btn').onclick = () => swapSidePanel(0);
 
 new ButtonToggler('.theme-mode-btn', switchTheme);
+new ButtonToggler('.temperature-unit-btn', switchTemperatureUnit);
 
 function swapSidePanel(angle) {
   let container = document.querySelector('.side-panels-container');
@@ -24,7 +25,7 @@ function ButtonToggler(selector, callback) {
   })
 
   function buttonToggled() {
-    let targetBtn = event.target;
+    let targetBtn = event.target.closest('button');
     if (targetBtn.dataset.toggled === 'true') {
       return;
     }
@@ -42,4 +43,8 @@ function switchTheme() {
   }
 
   document.documentElement.setAttribute('data-theme', toggledBtn.dataset.theme);
+}
+
+function switchTemperatureUnit() {
+  console.log('temp units switched');
 }

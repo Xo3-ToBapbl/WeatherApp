@@ -4,6 +4,8 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  gap: var(--contentOffset);
   padding: var(--contentOffset) calc(var(--content-horizontal-padding-ratio) * var(--contentOffset));
   background-color: var(--main-content-background);
   border-top-right-radius: var(--main-content-corner-radius);
@@ -19,28 +21,63 @@
   flex-direction: row;
   justify-content: space-between;
   
-  .menu-toolbar {
+  .menu-toolbar, .temperature-units-toolbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: calc(0.5 * var(--toolbar-height));
+  }
+  
+  .menu-btn {
+    display: var(--menu-btn-display);
+  }
 
-    .menu-btn {
-      display: var(--menu-btn-display);
-    }
+  .menu-btn, .theme-mode-btn, .temperature-unit-btn {
+    @include general.rounded-toolbar-btn;
 
-    .menu-btn, .theme-mode-btn {
-      @include general.rounded-toolbar-btn;
+    color: var(--radio-btn-unchecked-text-color);
+    border: 1px solid var(--side-panel-background);
+  }
 
-      color: var(--radio-btn-unchecked-text-color);
-      border: 1px solid var(--side-panel-background);
-    }
-    
-    .theme-mode-btn[data-toggled='true'] {
-      background-color: var(--radio-btn-checked-background);
-      color: var(--radio-btn-checked-text-color);
-    }
+  .temperature-unit-btn {
+    font-size: var(--small-text);
+    font-weight: bold;
+  }
+  
+  .theme-mode-btn[data-toggled='true'], .temperature-unit-btn[data-toggled='true'] {
+    background-color: var(--radio-btn-checked-background);
+    color: var(--radio-btn-checked-text-color);
+  }
 
-    @include general.toolbar-btn-hover;
+  @include general.toolbar-btn-hover;
+}
+
+.weak-forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: calc(var(--content-grid-gap-ratio) * var(--contentOffset));
+
+  .day-forecast {
+    min-width: 13rem;
+    min-height: 22rem;
+    padding: calc(0.5 * var(--contentOffset));
+    background-color: var(--forecast-card-background);
+    border-radius: var(--small-radius);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.current-day-forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: calc(var(--content-grid-gap-ratio) * var(--contentOffset));
+
+  .weather-data {
+    min-width: 26rem;
+    min-height: 20rem;
+    padding: calc(0.5 * var(--contentOffset));
+    background-color: var(--forecast-card-background);
+    border-radius: var(--small-radius);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   }
 }

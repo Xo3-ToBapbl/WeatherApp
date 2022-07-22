@@ -36,7 +36,9 @@
   --panel-btn-background: var(--semi-gray);
   --btn-text-color: var(--semi-white);
   --radio-btn-checked-background: var(--gray-blue);
-  --radio-btn-unchecked-background: var(--semi-white);  
+  --radio-btn-unchecked-background: var(--semi-white);
+
+  --forecast-card-background: var(--silver);
 }
 
 :root[data-theme='dark'] {
@@ -58,4 +60,6 @@
   --btn-text-color: var(--semi-white);
   --radio-btn-checked-background: var(--gray-blue);
   --radio-btn-unchecked-background: var(--semi-white);
+
+  --forecast-card-background: var(--semi-blue);
 }

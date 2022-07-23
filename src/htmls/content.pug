@@ -15,7 +15,7 @@ div.content
           | F
 
   section.weak-forecast
-    - for (var x = 0; x < 5; x++)
+    - for (var x = 0; x < 4; x++)
       div.day-forecast
         h3.forecast-title Tomorrow
         img(src=require("../resources/images/shower.png"))
@@ -28,6 +28,13 @@ div.content
             span
               sup o
               | C
+    div.day-forecast
+      div.lds-ring
+        div
+        div
+        div
+        div
+
   h2.current-day-forecast-title Today’s Highlights 
 
   section.current-day-forecast

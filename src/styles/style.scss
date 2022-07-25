@@ -9,7 +9,16 @@
   src: url("../resources/fonts/raleway.ttf");
 }
 
-button, input {
+html {
+  font: {
+    family: raleway, sans-serif;
+    size: 62.5%
+  }
+
+}
+
+button,
+input {
   font-family: raleway, sans-serif;
 }
 
@@ -17,11 +26,6 @@ button, input {
   color: var(--alternative-text-color);
   opacity: 1;
   font-weight: 100;
-}
-
-html {
-  font-family: raleway, sans-serif;
-  font-size: 62.5%;
 }
 
 body {

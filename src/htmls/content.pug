@@ -2,14 +2,14 @@ div.content
   div.content-toolbar
     div.menu-toolbar
       button.material-icons.menu-btn(onclick="window.location.href='#open-side-panel'") menu
-      button.material-icons.theme-mode-btn(data-toggled='false' data-theme='light') light_mode
-      button.material-icons.theme-mode-btn(data-toggled='true' data-theme='dark') dark_mode
+      button.material-icons.theme-mode-btn(data-toggled="false" data-theme="light") light_mode
+      button.material-icons.theme-mode-btn(data-toggled="true" data-theme="dark") dark_mode
     div.temperature-units-toolbar
-      button.temperature-unit-btn(data-toggled='true' data-temperature-unit='celsius')
+      button.temperature-unit-btn(data-toggled="true" data-temperature-unit="celsius")
         span
           sup o
           | C
-      button.temperature-unit-btn(data-toggled='false' data-temperature-unit='fahrenheit')
+      button.temperature-unit-btn(data-toggled="false" data-temperature-unit="fahrenheit")
         span
           sup o
           | F
@@ -38,33 +38,33 @@ div.content
   h2.current-day-forecast-title Today’s Highlights 
 
   section.current-day-forecast
-    div.weather-data
-      h3.forecast-title Wind status
-      p.value 7
-        span mph
-      p.description
-        span.material-icons near_me 
-        | WSW
-        
-    div.weather-data
-      h3.forecast-title Humidity
-      p.value 84
-        span %
-      div.progress-bar-container
-        div.progress-bar-values
-          p 0
-          p 50
-          p 100
-        div.progress-bar-outer
-          div.progress-bar-inner
-        p %
+      div.weather-data
+        h3.forecast-title Wind status
+        p.value 7
+          span mph
+        p.description
+          span.material-icons near_me 
+          | WSW
+          
+      div.weather-data
+        h3.forecast-title Humidity
+        p.value 84
+          span %
+        div.progress-bar-container
+          div.progress-bar-values
+            p 0
+            p 50
+            p 100
+          div.progress-bar-outer
+            div.progress-bar-inner
+          p %
 
-    div.weather-data
-      h3.forecast-title Visibility
-      p.value 6,4
-        span miles
+      div.weather-data
+        h3.forecast-title Visibility
+        p.value 6,4
+          span miles
 
-    div.weather-data
-      h3.forecast-title Air Pressure
-      p.value 998
-        span mb
+      div.weather-data
+        h3.forecast-title Air Pressure
+        p.value 998
+          span mb

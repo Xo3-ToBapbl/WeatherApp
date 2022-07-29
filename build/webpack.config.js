@@ -1,11 +1,17 @@
-const Path = require('path');
-const PugPlugin = require('pug-plugin');
+const Path = require("path");
+const PugPlugin = require("pug-plugin");
 const projectRoot = process.cwd();
+const webpack = require("webpack");
 
 module.exports = (env) => {
-  const envName = env.prod ? 'prod' : 'dev';
+  const envName = env.prod ? "prod" : "dev";
   const envVars = require(`./envs/${envName}.json`);
-
+  const config = {
+    envName: envName,
+    isProd: envName === "prod",
+    isDev: envName === "dev",
+  };
+  
   return {
     mode: envVars.mode,
     devtool: envVars.devtool,
@@ -42,7 +48,11 @@ module.exports = (env) => {
             filename: envVars.stylesPath
           })
         ]
-      })
+      }),
+
+      new webpack.DefinePlugin({
+        $app_config: JSON.stringify(config),
+      }),
     ],
   
     module: {
@@ -51,28 +61,28 @@ module.exports = (env) => {
           test: /\.pug$/,
           loader: PugPlugin.loader,
           options: {
-            method: 'render',
+            method: "render",
           }
         },
         {
           test: /\.(css|sass|scss)$/,
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 import: false,
               },
             },
-            'sass-loader',
+            "sass-loader",
           ],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
+          type: "asset/resource",
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: 'asset/resource',
+          type: "asset/resource",
         },
       ],
     },

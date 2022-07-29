@@ -1,14 +1,29 @@
 import "$blocks/_blocks.js";
 import { initializeApp } from "firebase/app";
 
-(()=> {
-  
-  new Application();
+const config = $app_config;
+
+((config)=> {
+  new Application(config);
 
   function Application() {
-    initializeFirebase();
+    if (config.isDev) {
+      initializeDevDependencies();
+    }
+
+    if (config.isProd) {
+      initializeProdDependencies();
+    }
+
     addEventListeners();
-  
+    
+    function initializeDevDependencies() {
+    }
+
+    function initializeProdDependencies() {
+      initializeFirebase();
+    }
+
     function initializeFirebase() {
       const firebaseConfig = {
         apiKey: "AIzaSyBGZ3W4Kg67RWJ3-Ot4vdDLegsYx-x4bj0",
@@ -23,6 +38,7 @@ import { initializeApp } from "firebase/app";
     }
   
     function addEventListeners() {
+
       document.addEventListener("onSwitchTheme", switchTheme);
       document.addEventListener("onSwitchTemperatureUnits", switchTemperatureUnit);
     }
@@ -35,4 +51,4 @@ import { initializeApp } from "firebase/app";
       console.log("Temperature units switched");
     }
   }
-})();
+})(config);

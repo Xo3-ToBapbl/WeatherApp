@@ -1,0 +1,13 @@
+doctype
+- const style = "app.scss"
+- const iconFont = "https://fonts.googleapis.com/icon?family=Material+Icons"
+- const appScript = "app.js"
+
+html(lang="en", data-theme="dark")
+  include $blocks/head/_head
+  +head(style, iconFont, appScript)
+
+  body.body
+    main.body__main.rounded-layout
+      include $blocks/panels/_panels
+      include $blocks/details/_details

@@ -1,0 +1,29 @@
+@use "$utils/utils";
+
+.primary-text {
+  color: var(--primary-text-color);
+
+  @include utils.forTheme(light) {
+    --primary-text-color: var(--blue-500);
+  }
+
+  @include utils.forTheme(dark) {
+    --primary-text-color: var(--crystal);
+  }
+}
+
+.secondary-text {
+  color: var(--secondary-text-color);
+
+  @include utils.forTheme(light) {
+    --secondary-text-color: var(--blue-400);
+  }
+
+  @include utils.forTheme(dark) {
+    --secondary-text-color: var(--gray-300);
+  }
+}
+
+.alternative-text {
+  color: var(--gray-400);
+}

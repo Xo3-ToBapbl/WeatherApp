@@ -1,0 +1,29 @@
+@use "$blocks/panels/base/base-panel";
+@use "$utils/utils";
+@use "$lib/lib";
+
+.wp__background {
+  @include utils.flex-center;
+
+  flex-grow: 1.5;
+  margin: 0px calc(-1 * var(--contentOffset));
+  background: linear-gradient(
+    var(--wp-background-transparent) 100%,
+    var(--wp-background-transparent) 100%),
+    url("../resources/images/cloud_background.png");
+  background-size: 150%;
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+
+  @include utils.forTheme(light) {
+    --wp-background-transparent: rgb(204, 204, 212, 0.70);
+  }
+
+  @include utils.forTheme(dark) {
+    --wp-background-transparent: rgba(30, 33, 58, 0.95);
+  }
+}
+
+.wp__img {
+  transform: scale(0.75, 0.75);
+}

@@ -1,0 +1,32 @@
+@use "$utils/utils";
+@use "$blocks/panels/base/base-buttons";
+
+.wp__search-button {
+  @include base-buttons.panel-button;
+
+  max-width: 16rem;
+  font-size: var(--regular-text);
+  border-radius: 0.5rem;
+}
+
+.wp__location-button {
+  @include base-buttons.panel-circle-button;
+}
+
+.wp__close-button {
+  @include base-buttons.panel-circle-button;
+
+  display: var(--wp-close-btn-display) !important;
+
+  @include utils.forDevice(default) {
+    --wp-close-btn-display: none;
+  }
+
+  @include utils.forDevice(tablet) {
+    --wp-close-btn-display: inline-block;
+  }
+
+  @include utils.forDevice(mobile) {
+    --wp-close-btn-display: none;
+  }
+}

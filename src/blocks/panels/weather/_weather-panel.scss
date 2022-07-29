@@ -1,0 +1,12 @@
+@forward "toolbar/wp__toolbar";
+@forward "background/wp__background";
+@forward "temperature/wp__temperature";
+@forward "description/wp__description";
+@forward "date/wp__today-date";
+@forward "location/wp__location";
+
+@use "$blocks/panels/base/_base-panel";
+
+.weather-panel {
+  @include base-panel.panel;
+}

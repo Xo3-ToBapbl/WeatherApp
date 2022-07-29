@@ -1,0 +1,28 @@
+@use "$utils/utils";
+
+.d_h__data-description {
+  height: 4rem;
+  font-size: var(--regular-text);
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.d_h__data-description-icon {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem !important;
+  background-color: var(--data-description-icon-background);
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 9px;
+  margin-right: calc(0.5 * var(--contentOffset));
+
+  @include utils.forTheme(light) {
+    --data-description-icon-background: var(--gray-400);
+  }
+
+  @include utils.forTheme(dark) {
+    --data-description-icon-background: var(--gray-500);
+  }
+}

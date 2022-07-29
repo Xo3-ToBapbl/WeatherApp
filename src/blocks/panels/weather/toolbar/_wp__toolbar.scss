@@ -1,0 +1,26 @@
+@forward "wp__buttons";
+
+@use "$blocks/panels/base/base-panel";
+@use "$utils/utils";
+@use "$lib/lib";
+
+.wp__toolbar {
+  flex: 0 0 var(--toolbar-height);
+  display: grid;
+  grid-template-rows: var(--toolbar-height);
+  grid-template-columns: var(--wp-toolbar-columns);
+  column-gap: calc(0.5 * var(--toolbar-height));
+  justify-content: space-between;
+
+  @include utils.forDevice(default) {
+    --wp-toolbar-columns: 1fr auto;
+  }
+
+  @include utils.forDevice(tablet) {
+    --wp-toolbar-columns: 1fr auto auto;
+  }
+
+  @include utils.forDevice(mobile) {
+    --wp-toolbar-columns: 1fr auto;
+  }
+}

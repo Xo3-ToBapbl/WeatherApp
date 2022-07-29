@@ -1,0 +1,29 @@
+@use "description/d_h__data-description";
+@use "progress-bar/d_h__data-progress-bar";
+
+@use "$blocks/details/base/base-forecast";
+@use "$utils/utils";
+
+.d_h__data {
+  @include base-forecast.forecast-card;
+
+  min-width: 26rem;
+  min-height: 19.5rem;
+}
+
+.d_h__data-title {
+  font-size: var(--regular-text);
+  font-weight: bold;
+  text-align: center;
+}
+
+.d_h__data-value {
+  font-size: 6.4rem;
+  font-weight: bold;
+  text-align: center;
+  
+  span {
+    font-size: 2.4rem;
+    margin-left: 1rem;
+  }
+}

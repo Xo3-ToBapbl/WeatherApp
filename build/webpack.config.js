@@ -1,5 +1,6 @@
 const Path = require('path');
 const PugPlugin = require('pug-plugin');
+const projectRoot = process.cwd();
 
 module.exports = (env) => {
   const envName = env.prod ? 'prod' : 'dev';
@@ -15,9 +16,20 @@ module.exports = (env) => {
     entry: {
       index: envVars.entryPath
     },
+    resolve: {
+      alias: {
+        $app: Path.resolve(projectRoot, "src/app"),
+        $src: Path.resolve(projectRoot, "src/"),
+        $resources: Path.resolve(projectRoot, "src/resources"),
+        $images: Path.resolve(projectRoot, "src/resources/images"),
+        $blocks: Path.resolve(projectRoot, "src/blocks"),
+        $lib: Path.resolve(projectRoot, "src/lib"),
+        $utils: Path.resolve(projectRoot, "src/utils"),
+      },
+    },
     output: {
       publicPath: `/`,
-      path: Path.resolve(process.cwd(), envVars.distPath),
+      path: Path.resolve(projectRoot, envVars.distPath),
       filename: envVars.outputScriptsPath,
       assetModuleFilename: envVars.assetsPath,
       clean: true,

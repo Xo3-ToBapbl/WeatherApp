@@ -1,6 +1,6 @@
 {
   "mode": "development",
-  "entryPath": "./src/htmls/index.pug",
+  "entryPath": "./src/app/app.pug",
   "distPath": "dist/dev/",
   "devtool": "inline-source-map",
   "outputScriptsPath": "scripts/[name].js",

@@ -1,0 +1,12 @@
+@forward "search-bar/sp__search-bar";
+@forward "result-list/sp__result-list";
+
+@use "$blocks/panels/base/base-panel";
+@use "$utils/styles/variables";
+
+.search-panel {
+  @include base-panel.panel;
+
+  gap: var(--contentOffset);
+  transform: rotateY(180deg);
+}

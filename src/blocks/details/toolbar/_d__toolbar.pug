@@ -1,0 +1,39 @@
+div.d__toolbar-container
+  div.d__menu-bar
+    button(
+      onclick="window.location.href='#open-side-panel'"
+      class=`
+        material-icons
+        d__menu-button
+        interactable`) menu
+
+    button(
+      data-toggled="false" 
+      data-theme="light"
+      class=`
+        material-icons
+        d__theme-mode-button
+        interactable`) light_mode
+
+    button.material-icons.d__theme-mode-button.interactable(
+      data-toggled="true" 
+      data-theme="dark"
+      class=`
+        material-icons
+        d__theme-mode-button
+        interactable`) dark_mode
+
+  div.d__temperature-unit-bar
+    button.d__temperature-unit-button.interactable(
+      data-toggled="true" 
+      data-temperature-unit="celsius")
+      span
+        sup o
+        | C
+        
+    button.d__temperature-unit-button.interactable(
+      data-toggled="false" 
+      data-temperature-unit="fahrenheit")
+      span
+        sup o
+        | F

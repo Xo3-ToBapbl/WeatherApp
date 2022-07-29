@@ -1,0 +1,18 @@
+@use '$utils/styles/reset';
+@use '$utils/styles/colors';
+@use '$utils/styles/variables';
+
+@use '$blocks/blocks';
+@use "$lib/lib";
+
+@font-face {
+  font-family: raleway;
+  src: url("$resources/fonts/raleway_regular.woff2");
+}
+
+html {
+  font: {
+    family: raleway, sans-serif;
+    size: 62.5%
+  }
+}

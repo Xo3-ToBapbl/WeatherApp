@@ -1,0 +1,33 @@
+@use "$utils/styles/colors";
+
+.d_h__data-progress-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: var(--small-text);
+  font-weight: bold;
+
+  p {
+    text-align: end;
+  }
+}
+
+.d_h__data-progress-bar-values {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.d_h__data-progress-bar-outer {
+  height: 0.8rem;
+  width: 100%;
+  background-color: var(--crystal);
+  border-radius: 0.4rem;
+}
+
+.d_h__data-progress-bar-inner {
+  width: 75%;
+  height: 0.8rem;
+  background-color: var(--yellow-400);
+  border-radius: 0.4rem;
+}

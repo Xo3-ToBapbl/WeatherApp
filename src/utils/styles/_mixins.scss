@@ -1,0 +1,47 @@
+@mixin forDevice ($breakpoint) {
+
+  @if $breakpoint == default {    
+    @at-root :root {
+      @content;
+    }
+  } 
+
+  @if $breakpoint == laptop {    
+    @media only screen and (max-width: 1368px), (max-height: 864px){
+      @content;
+    }
+  } 
+
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 428px) {
+      @content;
+    }
+  }
+}
+
+@mixin forTheme($breakpoint) {
+
+  @if $breakpoint == light {    
+    @at-root :root[data-theme='light'] {
+      @content;
+    }
+  }
+
+  @if $breakpoint == dark {    
+    @at-root :root[data-theme='dark'] {
+      @content;
+    }
+  } 
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

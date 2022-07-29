@@ -1,0 +1,18 @@
+@mixin base-button {
+  font-family: raleway, sans-serif;
+  border: none;
+}
+
+@mixin circle-button {
+  border-radius: 50%;
+}
+
+.interactable {
+  &:hover {
+    filter: brightness(85%);
+  }
+
+  &:active {
+    filter: brightness(70%);
+  }
+}

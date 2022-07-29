@@ -1,0 +1,43 @@
+@use "$utils/utils";
+
+.sp__result-list {
+  --forward-icon-visibility: hidden;
+}
+
+.sp__result-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  font-size: var(--regular-text);
+  border-radius: var(--small-radius);
+  height: 6rem;
+  line-height: 6rem;
+  padding: 0 15px;
+}
+
+.sp__result-list-icon {
+  visibility: var(--forward-icon-visibility);
+  align-self: center;
+  font-size: var(--small-text) !important;
+}
+
+.sp__result-list-item:hover {
+  --forward-icon-visibility: visible;
+
+  color: var(--list-item-hover-color);
+  border: 1.5px solid var(--list-item-hover-color);
+
+  @include utils.forTheme(light) {
+    --list-item-hover-color: var(--blue-500);
+  }
+  
+  @include utils.forTheme(dark) {
+    --list-item-hover-color: var(--crystal);
+  }
+}
+
+.sp__result-list-item:active {
+  border-width: 2px;
+  font-weight: bold;
+}

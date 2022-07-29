@@ -1,0 +1,12 @@
+@forward "day-forecast/d_wf__day-forecast";
+
+@use "$utils/utils";
+@use "$blocks/details/base/base-section";
+
+.d__weak-forecast {
+  @include base-section.details-section;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: calc(var(--details-section-grid-gap-ratio) * var(--contentOffset));
+}

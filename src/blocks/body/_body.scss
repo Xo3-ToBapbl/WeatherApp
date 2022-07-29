@@ -1,0 +1,69 @@
+@use '$utils/styles/_colors.scss';
+@use '$utils/styles/_mixins.scss';
+
+.body {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--body-background);
+
+  @include mixins.forTheme(light) {
+    --body-background: var(--silver-200);
+  };
+
+  @include mixins.forTheme(dark) {
+    --body-background: var(--blue-700);
+  };
+}
+
+.body__main {
+  display: var(--body-main-display);
+  grid: [stacked] 1fr / min-content [stacked] 1fr;
+  flex-direction: column;
+  height: var(--body-main-height);
+  width: var(--body-main-width);
+  margin: var(--body-main-margin);
+  overflow: var(--body-main-overflow);
+  background-color: var(--body-main-background);
+  box-shadow: 0px 2px 7px 2px var(--body-main-shadow-color);
+  border-radius: var(--body-main-corner-radius);
+
+  @include mixins.forDevice(default) {
+    --body-main-height: 864px;
+    --body-main-width: 1368px;
+    --body-main-margin: auto;
+    --body-main-overflow: none;
+    --body-main-display: grid;
+    --body-main-corner-radius: 10px;
+  }
+
+  @include mixins.forDevice(laptop) {
+    --body-main-height: 100vh;
+    --body-main-width: 100%;
+    --body-main-margin: 0;
+    --body-main-overflow: none;
+    --body-main-corner-radius: 0;
+  }
+
+  @include mixins.forDevice(mobile) {
+    --body-main-display: flex;
+  }
+
+  @include mixins.forDevice(tablet) {
+    --body-main-overflow: none;
+  }
+
+  @include mixins.forDevice(mobile) {
+    --body-main-overflow: auto;
+  }
+
+  @include mixins.forTheme(light) {
+    --body-main-background: var(--crystal);
+    --body-main-shadow-color: var(--silver-300);
+  }
+
+  @include mixins.forTheme(dark) {
+    --body-main-background:var(--blue-800);
+    --body-main-shadow-color: var(--blue-800);
+  }
+}

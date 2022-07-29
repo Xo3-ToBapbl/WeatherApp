@@ -1,0 +1,19 @@
+@use "$utils/utils";
+
+@mixin forecast-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: calc(0.5 * var(--contentOffset));
+  background-color: var(--forecast-card-background);
+  border-radius: var(--small-radius);
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+@include utils.forTheme(light) {
+  --forecast-card-background: var(--silver-100);
+}
+
+@include utils.forTheme(dark) {
+  --forecast-card-background: var(--blue-600);
+}

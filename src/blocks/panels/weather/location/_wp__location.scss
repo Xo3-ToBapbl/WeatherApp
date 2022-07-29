@@ -1,0 +1,15 @@
+@use "$blocks/panels/base/base-panel";
+@use "$utils/utils";
+@use "$lib/lib";
+
+.wp__location {
+  @include utils.flex-center;
+  vertical-align: center;
+
+  flex: 0 0 5rem;
+}
+
+.wp__city {
+  font-size: var(--plain-text);
+  vertical-align: 0.5rem;
+}

@@ -1,0 +1,15 @@
+.wp__temperature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  p {
+    text-align: center;
+    font-size: 11rem;
+
+    span {
+      font-size: 3.25rem;
+    }
+  }
+}

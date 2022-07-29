@@ -1,6 +1,6 @@
 {
   "mode": "production",
-  "entryPath": "./src/htmls/index.pug",
+  "entryPath": "./src/app/app.pug",
   "distPath": "dist/prod/",
   "devtool": false,
   "outputScriptsPath": "scripts/[name].[contenthash:8].js",

@@ -1,0 +1,72 @@
+@forward "search/search-panel";
+@forward "weather/weather-panel";
+
+@use "$utils/utils";
+
+.panels-container {
+  display: flex;
+  height: 100%;
+  width: var(--panels-container-width);
+  transform: var(--panels-container-transform);
+  transition: var(--panels-container-transition);
+  z-index: 3;
+  perspective: 1500px;
+
+  @include utils.forDevice(default) {
+    --panels-container-width: var(--panel-width);
+    --panels-container-transform: translateX(0);
+    --panels-container-transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @include utils.forDevice(tablet) {
+    --panels-container-width: 100%;
+    --panels-container-transform: translateX(-110vw);
+  }
+
+  @include utils.forDevice(mobile) {
+    --panels-container-width: 100%;
+    --panels-container-transform: translateX(0);
+  }
+}
+
+.panels-container__inner {
+  position: relative;
+  width: 100%;
+  height: var(--panels-container-inner-height);
+  flex: 0 0 var(--panels-container-inner-width); 
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  
+  @include utils.forDevice(default) {
+    --panels-container-inner-height: 100%;
+    --panels-container-inner-width: var(--panel-width);
+  }
+
+  @include utils.forDevice(mobile) {
+    --panels-container-inner-height: 100vh;
+    --panels-container-inner-width: 100%;
+  }
+}
+
+.panels-container__close-link {
+  height: 100%;
+  width: var(--side-panel-close-link-width);
+
+  @include utils.forDevice(default) {
+    --side-panel-close-link-width: 0;
+  }
+
+  @include utils.forDevice(tablet) {
+    --side-panel-close-link-width: 100%;
+  }
+
+  @include utils.forDevice(mobile) {
+    --side-panel-close-link-width: 0;
+  }
+}
+
+#open-side-panel:target {
+  --panels-container-transform: 0;
+  transition: var(--panels-container-transition);
+}

@@ -25,5 +25,7 @@
 }
 
 .wp__img {
-  transform: scale(0.75, 0.75);
+  width: 150px;
+  height: 175px;
+  object-fit: contain;
 }

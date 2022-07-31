@@ -15,4 +15,9 @@
   &:active {
     filter: brightness(70%);
   }
+
+  &:disabled,
+  &[disabled] {
+    filter: brightness(70%);
+  }
 }

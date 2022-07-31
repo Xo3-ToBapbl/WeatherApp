@@ -1,9 +1,11 @@
 {
+  "envName": "prod",
   "mode": "production",
   "entryPath": "./src/app/app.pug",
   "distPath": "dist/prod/",
   "devtool": false,
   "outputScriptsPath": "scripts/[name].[contenthash:8].js",
   "assetsPath": "resources/[name].[contenthash:8][ext]",
-  "stylesPath": "styles/[name].[contenthash:8].css"
+  "stylesPath": "styles/[name].[contenthash:8].css",
+  "servicesSource": "lib"
 }

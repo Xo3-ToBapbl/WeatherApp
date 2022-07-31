@@ -1,3 +1,4 @@
-@forward "$lib/layout/grid-child-layout";
-@forward "$lib/buttons/buttons";
-@forward "$lib/texts/texts";
+@forward "$lib/components/layout/grid-child-layout";
+@forward "$lib/components/buttons/buttons";
+@forward "$lib/components/texts/texts";
+@forward "$lib/components/loaders/loader";

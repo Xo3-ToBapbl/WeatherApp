@@ -1,43 +1,15 @@
 import "$blocks/_blocks.js";
-import { initializeApp } from "firebase/app";
+import { initializeFirebase } from "$services/firebase.js";
 
-const config = $app_config;
-
-((config)=> {
+((config) => {
   new Application(config);
 
-  function Application() {
-    if (config.isDev) {
-      initializeDevDependencies();
-    }
+  function Application(config) {
 
-    if (config.isProd) {
-      initializeProdDependencies();
-    }
+    initializeFirebase();
+    initializeListeners();
 
-    addEventListeners();
-    
-    function initializeDevDependencies() {
-    }
-
-    function initializeProdDependencies() {
-      initializeFirebase();
-    }
-
-    function initializeFirebase() {
-      const firebaseConfig = {
-        apiKey: "AIzaSyBGZ3W4Kg67RWJ3-Ot4vdDLegsYx-x4bj0",
-        authDomain: "weatherapp-9fe6e.firebaseapp.com",
-        projectId: "weatherapp-9fe6e",
-        storageBucket: "weatherapp-9fe6e.appspot.com",
-        messagingSenderId: "1061920221511",
-        appId: "1:1061920221511:web:0b067ef12549ad71c68462"
-      };
-  
-      initializeApp(firebaseConfig);
-    }
-  
-    function addEventListeners() {
+    function initializeListeners() {
 
       document.addEventListener("onSwitchTheme", switchTheme);
       document.addEventListener("onSwitchTemperatureUnits", switchTemperatureUnit);
@@ -51,4 +23,4 @@ const config = $app_config;
       console.log("Temperature units switched");
     }
   }
-})(config);
+})($app_config);

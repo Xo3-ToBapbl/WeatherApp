@@ -5,7 +5,7 @@
   @include base-forecast.forecast-card;
 
   min-width: 13rem;
-  min-height: 22rem;
+  min-height: 21rem;
 }
 
 .d_wf__day-forecast-title {
@@ -15,7 +15,10 @@
 }
 
 .d_wf__day-forecast-image {
-  transform: scale(0.65, 0.65);
+  width: 75px;
+  height: 80px;
+  align-self: center;
+  object-fit: contain;
 }
 
 .d_wf__day-forecast-temperature {
@@ -32,6 +35,7 @@
   font-weight: bold;
 
   span {
+    display: none;
     font-size: var(--small-text);
   }
 }

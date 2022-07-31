@@ -1,7 +1,7 @@
 mixin highlights-data(title, value, units)
   div.d_h__data
     h3.d_h__data-title.primary-text=title
-    p.d_h__data-value.primary-text=value
+    p.d_h__data-value.primary-text.loader=value
       span=units
     if block
       block

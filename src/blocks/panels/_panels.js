@@ -1,9 +1,9 @@
-import "./weather/_weather-panel.js";
-import "./search/_search-panel.js";
+export * from "./weather/_weather-panel.js";
+export * from "./search/_search-panel.js";
 
 (()=> {
 
-  document.querySelector(".panels-container").addEventListener("onSwapPanel", swapPanels);
+  document.querySelector(".panels-container").addEventListener("swapPanel", swapPanels);
 
   function swapPanels() {
     let angle = event.detail.angle;

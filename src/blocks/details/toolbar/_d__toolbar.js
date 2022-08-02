@@ -1,7 +1,7 @@
 (()=> {
   
-  new ButtonToggler(".d__theme-mode-button", "onSwitchTheme");
-  new ButtonToggler(".d__temperature-unit-button", "onSwitchTemperatureUnits");
+  new ButtonToggler(".d__theme-mode-button", "switchTheme");
+  new ButtonToggler(".d__temperature-unit-button", "switchTemperatureUnits");
 
   function ButtonToggler(selector, eventName) {
     this.eventName = eventName;

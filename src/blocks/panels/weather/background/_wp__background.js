@@ -1,6 +1,6 @@
 import { imageRepository } from "$lib/repositories/_image";
 
-export function WeatherImageModel(builderConstructor) {
+export function TodayWeatherImageModel(builderConstructor) {
   const builder = new builderConstructor();
   const model = builder
     .updatable(updateData)

@@ -33,9 +33,8 @@
 .d_wf__day-forecast-min-temperature {
   font-size: var(--regular-text);
   font-weight: bold;
+}
 
-  span {
-    display: none;
-    font-size: var(--small-text);
-  }
+.d_wf__day-forecast-unit {
+  font-size: var(--small-text);
 }

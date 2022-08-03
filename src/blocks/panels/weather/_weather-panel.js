@@ -1,5 +1,8 @@
-import "./toolbar/_wp__toolbar.js";
-import {WeatherImageModel} from "./background/_wp__background.js"
+import "./toolbar/_wp__toolbar";
+import {TodayWeatherImageModel} from "./background/_wp__background";
+import {TodayTemperatureModel} from "./temperature/_wp__temperature";
+import {TodayWeatherDescriptionModel} from "./description/_wp__description";
+export {setTodayDate} from "./date/_wp__today-date";
 
 export function WeatherPanelModel(builderConstructor) {
   const builder = new builderConstructor();
@@ -9,7 +12,9 @@ export function WeatherPanelModel(builderConstructor) {
     .build();
   
   model.innerModels = [
-    new WeatherImageModel(builderConstructor),
+    new TodayWeatherImageModel(builderConstructor),
+    new TodayTemperatureModel(builderConstructor),
+    new TodayWeatherDescriptionModel(builderConstructor),
   ];
 
   return model;

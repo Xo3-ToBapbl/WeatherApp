@@ -1,2 +1,2 @@
 export * from "./panels/_panels.js";
-import "./details/_details.js";
+export * from "./details/_details.js";

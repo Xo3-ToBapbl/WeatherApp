@@ -85,7 +85,7 @@ export const weatherService = (() => {
       setTimeout(() => {
         let eventToDispatch = new CustomEvent("weatherDataReceived", {detail: weatherData});
         this.eventTarget.dispatchEvent(eventToDispatch);
-      }, 1000)
+      }, 2000)
     }
   };
   

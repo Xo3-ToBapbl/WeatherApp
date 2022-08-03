@@ -1,17 +1,18 @@
 .wp__temperature {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
   flex-grow: 1;
+}
 
-  p {
-    text-align: center;
-    font-size: 11rem;
+.wp__temperature-value {
+  align-self: center;
+  font-size: 11rem;
+}
 
-    span {
-      display: none;
-      margin-left: 0.5rem;
-      font-size: 3.25rem;
-    }
-  }
+.wp__temperature-unit {
+  align-self: center;
+  margin-left: 0.5rem;
+  font-size: 3.25rem;
 }

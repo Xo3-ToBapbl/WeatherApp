@@ -1,7 +1,8 @@
 import * as utils from "$utils/_utils.js";
 
-export function CitiesModel(builder) {
-  let model = builder
+export function CitiesModel(builderConstructor) {
+  const builder = new builderConstructor();
+  const model = builder
     .updatable(updateData)
     .build();
 

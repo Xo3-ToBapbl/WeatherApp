@@ -9,8 +9,8 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
   new Application(config).initialize();
 
   function Application(config) {
-    this.weatherPanelModel = new blocks.WeatherPanelModel(new ForecastModelBuilder());
-    this.citiesModel = new blocks.CitiesModel(new ForecastModelBuilder());
+    this.weatherPanelModel = new blocks.WeatherPanelModel(ForecastModelBuilder);
+    this.citiesModel = new blocks.CitiesModel(ForecastModelBuilder);
     this.initialize = function initialize() {
       initializeListeners.call(this);
       initializeServices.call(this);

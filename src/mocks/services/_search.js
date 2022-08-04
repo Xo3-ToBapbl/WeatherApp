@@ -952,6 +952,11 @@ export const searchService = (() => {
   
   return {
     eventTarget: new EventTarget(),
+    
+    initialize() {
+
+    },
+    
     requestCityData(name, cancelPrevious) {
       cancelPrevious ??= true;
       if (cancelPrevious && previousPromise) {

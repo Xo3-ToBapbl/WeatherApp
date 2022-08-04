@@ -84,7 +84,7 @@ export const weatherService = (() => {
     eventTarget: new EventTarget(),
 
     initialize() {
-      return this.requestWeatherData();
+      this.requestWeatherData();
     },
 
     requestWeatherData() {

@@ -43,6 +43,7 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
 
     function initializeServices() {
       firebaseService.initialize();
+      searchService.initialize();
       weatherService.initialize();
 
       return this;

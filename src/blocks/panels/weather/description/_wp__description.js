@@ -12,11 +12,15 @@ export function TodayWeatherDescriptionModel(builderConstructor) {
 
   function updateData(todayForecast) {
     this.descriptionElement.innerText = todayForecast.description;
-    this.descriptionElement.classList.toggle("loader");
+    toggleLoaderFor(this);
   }
   
   function showLoader() {
-    this.descriptionElement.classList.toggle("loader");
+    toggleLoaderFor(this);
     this.descriptionElement.innerText = "Loading...";
+  }
+
+  function toggleLoaderFor(model) {
+    model.descriptionElement.classList.toggle("loader");
   }
 }

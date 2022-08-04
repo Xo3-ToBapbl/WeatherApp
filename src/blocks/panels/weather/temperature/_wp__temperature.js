@@ -11,10 +11,14 @@ export function TodayTemperatureModel(builderConstructor) {
 
   function updateData(todayForecast) {
     this.valueElement.innerText = todayForecast.maxTemperature;
-    this.valueElement.classList.toggle("loader");
+    toggleLoaderFor(model);
   }
   
   function showLoader() {
-    this.imgElement.classList.toggle("loader");
+    toggleLoaderFor(model);
+  }
+
+  function toggleLoaderFor(model) {
+    model.valueElement.classList.toggle("loader");
   }
 }

@@ -24,6 +24,8 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
       document.addEventListener("switchTheme", _switchTheme);
       document.addEventListener("switchTemperatureUnits", _switchTemperatureUnit);
       document.addEventListener("requestWeatherData", this.weatherPanelModel.showLoader);
+      document.addEventListener("requestWeatherData", this.weekForecast.showLoader);
+      document.addEventListener("requestWeatherData", this.highlights.showLoader);
       document.addEventListener("requestWeatherData", weatherService.requestWeatherData.bind(weatherService));
       document.addEventListener("requestCityData", (e) => searchService.requestCityData.call(searchService, e.detail));
 

@@ -26,6 +26,6 @@ export function WeatherPanelModel(builderConstructor) {
   }
   
   function showLoader() {
-    console.log("weather panel loader showed");
+    this.innerModels.forEach((model) => model.showLoader());
   }
 }

@@ -12,10 +12,14 @@ export function TodayWeatherImageModel(builderConstructor) {
 
   function updateData(todayForecast) {
     this.imgElement.src = imageRepository.getImage(todayForecast.description);
-    this.imgElement.classList.toggle("loader");
+    toggleLoaderFor(this);
   }
   
   function showLoader() {
-    this.imgElement.classList.toggle("loader");
+    toggleLoaderFor(this);
+  }
+
+  function toggleLoaderFor(model) {
+    model.imgElement.classList.toggle("loader");
   }
 }

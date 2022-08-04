@@ -1,3 +1,14 @@
+@use "$utils/_utils";
+
 .d__creators {
   text-align: center;
+  padding-bottom: var(--creators-padding-bottom);
+
+  @include utils.forDevice(default) {
+    --creators-padding-bottom: 0;
+  }
+
+  @include utils.forDevice(mobile) {
+    --creators-padding-bottom: calc(0.5 * var(--contentOffset));
+  }
 }

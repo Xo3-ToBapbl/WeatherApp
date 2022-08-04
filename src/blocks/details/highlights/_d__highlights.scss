@@ -8,13 +8,4 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
-  padding-bottom: var(--highlights-padding-bottom);
-
-  @include utils.forDevice(default) {
-    --highlights-padding-bottom: 0;
-  }
-
-  @include utils.forDevice(mobile) {
-    --highlights-padding-bottom: calc(0.5 * var(--contentOffset));
-  }
 }

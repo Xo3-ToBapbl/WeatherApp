@@ -13,6 +13,7 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
     this.weatherPanelModel = new blocks.WeatherPanelModel(ForecastModelBuilder);
     this.citiesModel = new blocks.CitiesModel(ForecastModelBuilder);
     this.weekForecast = new blocks.WeekForecastModel(ForecastModelBuilder);
+    this.highlights = new blocks.HighlightsModel(ForecastModelBuilder);
     this.initialize = function initialize() {
       setTodayDate();
       initializeListeners.call(this);
@@ -28,6 +29,7 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
 
       weatherService.eventTarget.addEventListener("weatherDataReceived", this.weatherPanelModel.updateData);
       weatherService.eventTarget.addEventListener("weatherDataReceived", this.weekForecast.updateData);
+      weatherService.eventTarget.addEventListener("weatherDataReceived", this.highlights.updateData);
       searchService.eventTarget.addEventListener("cityDataReceived", this.citiesModel.updateData)
 
       return this;

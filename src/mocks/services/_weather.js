@@ -20,7 +20,7 @@ export const weatherService = (() => {
       humidity: 65,
       visibility: 6.4,
       airPressure: 998,
-      description: "clear",
+      imageCode: "04d",
       date: "01.01.2022",
     },
     {
@@ -31,7 +31,7 @@ export const weatherService = (() => {
       windDirection: "WDW",
       visibility: 6.8,
       airPressure: 996,
-      description: "light_cloud",
+      imageCode: "01d",
       date: "01.01.2022",
     },
     {
@@ -42,7 +42,7 @@ export const weatherService = (() => {
       humidity: 65,
       visibility: 6.4,
       airPressure: 998,
-      description: "light_rain",
+      imageCode: "10d",
       date: "01.01.2022",
     },
     {
@@ -53,7 +53,7 @@ export const weatherService = (() => {
       humidity: 60,
       visibility: 5.4,
       airPressure: 995,
-      description: "heavy_rain",
+      imageCode: "11d",
       date: "01.01.2022",
     },
     {
@@ -64,7 +64,7 @@ export const weatherService = (() => {
       humidity: 58,
       visibility: 6.1,
       airPressure: 998,
-      description: "light_cloud",
+      imageCode: "09d",
       date: "01.01.2022",
     },
     {
@@ -75,7 +75,7 @@ export const weatherService = (() => {
       humidity: 65,
       visibility: 6.4,
       airPressure: 998,
-      description: "clear",
+      imageCode: "50d",
       date: "01.01.2022",
     },
   ];

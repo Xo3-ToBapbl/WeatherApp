@@ -1,6 +1,7 @@
 {
   "envName": "mock",
   "mode": "development",
+  "host": "none",
   "entryPath": "./src/app/app.pug",
   "distPath": "dist/dev/",
   "devtool": "inline-source-map",

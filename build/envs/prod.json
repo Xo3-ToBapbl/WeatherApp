@@ -1,6 +1,7 @@
 {
   "envName": "prod",
   "mode": "production",
+  "host": "https://weatherappserver-web-ukg2v46doq-lm.a.run.app:443",
   "entryPath": "./src/app/app.pug",
   "distPath": "dist/prod/",
   "devtool": false,

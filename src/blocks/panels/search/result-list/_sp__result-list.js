@@ -10,21 +10,20 @@ export function CitiesModel(builderConstructor) {
   return model;
 
   function updateData() {
-    console.log(`search data updated: ${event.detail}`);
-    let cities = [...event.detail];
-    if (cities.length == 0) {
+    let cityModels = [...event.detail];
+    if (cityModels.length == 0) {
       this.listElement.innerHTML = "";
       return;
     }
 
-    let cityItems = cities.map((model) => getCityTemplate(model.city));
+    let cityItems = cityModels.map((model) => getCityTemplate(model));
     this.listElement.innerHTML = cityItems.join("");
   }
 
-  function getCityTemplate(cityName) {
+  function getCityTemplate(cityModel) {
     return `
-      <li class="sp__result-list-item secondary-text">
-        ${cityName}
+      <li class="sp__result-list-item secondary-text" data-latitude="${cityModel.latitude}" data-longitude="${cityModel.longitude}">
+        ${cityModel.name.substring(0, 30)}, ${cityModel.code}
         <span class="material-icons sp__result-list-icon">arrow_forward_ios</span>
       </li>`;
   }
@@ -44,7 +43,10 @@ export function CitiesModel(builderConstructor) {
     if (!this.contains(selectedResult))
       return;
 
-    let eventToDispatch = new CustomEvent("requestWeatherData",  {bubbles: true, cancelable: true, detail: selectedResult.innerText});
+    let eventToDispatch = new CustomEvent("requestWeatherData",  {bubbles: true, cancelable: true, detail: {
+      latitude: selectedResult.dataset.latitude,
+      longitude: selectedResult.dataset.longitude
+    }});
     let proceed = selectedResult.dispatchEvent(eventToDispatch);
     if (proceed) {
       let eventToDispatch = new CustomEvent("swapPanel", {bubbles: true, detail: {angle: 0}});
@@ -53,8 +55,6 @@ export function CitiesModel(builderConstructor) {
   }
 
   function cityTyped() {
-    console.log("city typed");
-
     let cityToSearch = this.value;
     if (cityToSearch.length < 3){
       return;

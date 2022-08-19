@@ -6,21 +6,10 @@ export const searchService = (() => {
   
   return {
     eventTarget: new EventTarget(),
+    host: "",
 
-    async initialize() {
-      let result = await fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
-        method: "POST",
-        headers: {
-          "content-Type": "application/x-www-form-urlencoded"
-        },
-        body: JSON.stringify({
-          "grant_type": "client_credentials",
-          "client_id": "1EkHdZtaes3xzeaRiOhAiJcgn2Cy7zKQ",
-          "client_secret": "Q8qmXm7gj82n9Vjv"
-        }),
-      });
-  
-      console.log(result);
+    initialize(config) {
+      this.host = config.host;
     },
 
     requestCityData(name, cancelPrevious) {
@@ -29,7 +18,7 @@ export const searchService = (() => {
         previousPromise.cancel();
       }
 
-      previousPromise = makeCancelable(searchCity(name));
+      previousPromise = makeCancelable(searchCity.call(this, name));
       previousPromise.promise
         .then((result) => raiseResult.call(this, result))
         .catch(logError);
@@ -50,18 +39,14 @@ export const searchService = (() => {
   };
   
   function searchCity(name) {
-    let promise = new Promise((resolve, _) => {
+    return new Promise(async (resolve, _) => {
 
-      setTimeout(() => {
-        let result = capitals.filter((item) => {
-          return item["city"].toLowerCase().includes(name.toLowerCase()) ;
-        });
+      let response = await fetch(`${this.host}/cities/find/${name}`, { method: "GET" });
+      let cityModels = await response.json();
 
-        resolve(result);
-      }, 1000);
+      resolve(cityModels.result);
+      
     });
-
-    return promise;
   }
 
 })();

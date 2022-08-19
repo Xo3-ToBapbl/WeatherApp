@@ -6,12 +6,13 @@ const webpack = require("webpack");
 module.exports = (env) => {
   const envName = env.prod ? "prod" : env.mock ? "mock" : "dev";
   const envVars = require(`./envs/${envName}.json`);
-  const config = ((name) => { return {
-    isProd: name == "prod",
-    isDev: name == "dev",
-    isMock: name == "mock",
-    envName: name,
-  }})(envName);
+  const config = ((vars) => { return {
+    isProd: vars.envName == "prod",
+    isDev: vars.envName == "dev",
+    isMock: vars.envName == "mock",
+    envName: vars.envName,
+    host: vars.host,
+  }})(envVars);
 
   return {
     mode: envVars.mode,

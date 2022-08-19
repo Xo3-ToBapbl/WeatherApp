@@ -11,7 +11,7 @@ export function TodayWeatherDescriptionModel(builderConstructor) {
   return model;
 
   function updateData(todayForecast) {
-    this.descriptionElement.innerText = todayForecast.description;
+    this.descriptionElement.innerText = imageRepository.getImageData(todayForecast.imageCode).description;
     toggleLoaderFor(this);
   }
   

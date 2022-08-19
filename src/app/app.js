@@ -17,7 +17,7 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
     this.initialize = function initialize() {
       setTodayDate();
       initializeListeners.call(this);
-      initializeServices.call(this);
+      initializeServices.call(this, config);
     };
 
     function initializeListeners() {
@@ -26,7 +26,7 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
       document.addEventListener("requestWeatherData", this.weatherPanelModel.showLoader);
       document.addEventListener("requestWeatherData", this.weekForecast.showLoader);
       document.addEventListener("requestWeatherData", this.highlights.showLoader);
-      document.addEventListener("requestWeatherData", weatherService.requestWeatherData.bind(weatherService));
+      document.addEventListener("requestWeatherData", (e) => weatherService.requestWeatherData.call(weatherService, e.detail.latitude, e.detail.longitude));
       document.addEventListener("requestCityData", (e) => searchService.requestCityData.call(searchService, e.detail));
 
       weatherService.eventTarget.addEventListener("weatherDataReceived", this.weatherPanelModel.updateData);
@@ -41,10 +41,10 @@ import { ForecastModelBuilder } from "$lib/builders/_forecast-model-builder.js"
       blocks.setTodayDate(utils.getFormattedDate(new Date(Date.now())));
     }
 
-    function initializeServices() {
+    function initializeServices(config) {
       firebaseService.initialize();
-      searchService.initialize();
-      weatherService.initialize();
+      searchService.initialize(config);
+      weatherService.initialize(config);
 
       return this;
     }

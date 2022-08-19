@@ -1,6 +1,7 @@
 {
   "envName": "dev",
   "mode": "development",
+  "host": "http://localhost:80",
   "entryPath": "./src/app/app.pug",
   "distPath": "dist/dev/",
   "devtool": "inline-source-map",

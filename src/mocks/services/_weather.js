@@ -1,16 +1,4 @@
 export const weatherService = (() => {
-  const weatherMap = {
-    clear: "clear",
-    hail: "hail",
-    heavyCloud: "heavy_cloud",
-    heavyRain: "heavy_rain",
-    lightCloud: "light_cloud",
-    lightRain: "light_rain",
-    shower: "shower",
-    sleet: "sleet",
-    snow: "snow",
-    thunderstorm: "thunderstorm",
-  };
   const weatherData = [
     {
       maxTemperature: 15,

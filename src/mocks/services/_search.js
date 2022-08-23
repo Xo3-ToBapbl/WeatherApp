@@ -56,12 +56,6 @@ export const searchService = (() => {
         "code": "GB",
         "latitude": 51.51279,
         "longitude": -0.09184
-    },
-    {
-        "name": "London Village",
-        "code": "KI",
-        "latitude": 1.98487,
-        "longitude": -157.47502
     }
   ];
   let previousPromise = null;
@@ -69,10 +63,7 @@ export const searchService = (() => {
   return {
     eventTarget: new EventTarget(),
     
-    initialize() {
-
-    },
-    
+    initialize() {  },
     requestCityData(name, cancelPrevious) {
       cancelPrevious ??= true;
       if (cancelPrevious && previousPromise) {
@@ -100,7 +91,7 @@ export const searchService = (() => {
   };
   
   function searchCity(name) {
-    let promise = new Promise((resolve, _) => {
+    return new Promise((resolve, _) => {
 
       setTimeout(() => {
         let result = capitals.filter((item) => {
@@ -110,8 +101,6 @@ export const searchService = (() => {
         resolve(result);
       }, 1000);
     });
-
-    return promise;
   }
 
 })();

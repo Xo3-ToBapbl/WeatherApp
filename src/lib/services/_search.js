@@ -1,52 +1,52 @@
-import {makeCancelable} from "$utils/_utils.js"
+import { requestExecutor } from "$lib/system/_request";
 
 export const searchService = (() => {
-  
-  let previousPromise = null;
+  let host = "";
+  let abortController = null;
+  let eventTarget = new EventTarget();
   
   return {
-    eventTarget: new EventTarget(),
-    host: "",
+    eventTarget: eventTarget,
 
     initialize(config) {
-      this.host = config.host;
+      host = config.host;
     },
 
-    requestCityData(name, cancelPrevious) {
-      cancelPrevious ??= true;
-      if (cancelPrevious && previousPromise) {
-        previousPromise.cancel();
-      }
+    async requestCityData(name, abortPrevious) {
+      abortIf(abortPrevious);
+      abortController = new AbortController();
 
-      previousPromise = makeCancelable(searchCity.call(this, name));
-      previousPromise.promise
-        .then((result) => raiseResult.call(this, result))
-        .catch(logError);
+      const url = `${host}/cities/find/${name}`;
+      const params = { method: "GET", signal: abortController.signal };
+      const request = fetch(url, params);
+      const response = await requestExecutor.execute(request);
 
-      function raiseResult(result) {
-        let eventToDispatch = new CustomEvent("cityDataReceived", {detail: result});
-        this.eventTarget.dispatchEvent(eventToDispatch);
-      }
-
-      function logError(error) {
-        if (error.isCanceled) {
-          console.log("SearchService.requestCityData: operation cancelled")
-        } else {
-          console.log(`SearchService: ${error}`)
-        }
-      }
+      response.handle(
+        function success(response) { raiseResult(response.result); },
+        function failed(response) { raiseError(response.error); },
+        function aborted() { console.log("SearchService.requestCityData: operation aborted"); },
+      );
     },
   };
-  
-  function searchCity(name) {
-    return new Promise(async (resolve, _) => {
 
-      let response = await fetch(`${this.host}/cities/find/${name}`, { method: "GET" });
-      let cityModels = await response.json();
+  function abortIf(abortPrevious) {
+    abortPrevious ??= true;
 
-      resolve(cityModels.result);
-      
-    });
+    if (abortPrevious && abortController) {
+      abortController.abort();
+    }
+  }
+
+  function raiseResult(result) {
+    let eventToDispatch = new CustomEvent("cityDataReceived", {detail: result});
+    eventTarget.dispatchEvent(eventToDispatch);
+  }
+
+  function raiseError(error) {
+    console.log(`SearchService: ${error}`);
+
+    let eventToDispatch = new CustomEvent("showError", {detail: "Error appeared during fetching search city data. Please, reload page."});
+    eventTarget.dispatchEvent(eventToDispatch);
   }
 
 })();

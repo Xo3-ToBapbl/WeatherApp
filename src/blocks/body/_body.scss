@@ -1,5 +1,6 @@
-@use '$utils/styles/_colors.scss';
-@use '$utils/styles/_mixins.scss';
+@use "$utils/_utils";
+@use "$lib/_lib";
+@forward "notification/b__notification";
 
 .body {
   display: flex;
@@ -7,11 +8,11 @@
   width: 100%;
   background-color: var(--body-background);
 
-  @include mixins.forTheme(light) {
+  @include utils.forTheme(light) {
     --body-background: var(--silver-200);
   };
 
-  @include mixins.forTheme(dark) {
+  @include utils.forTheme(dark) {
     --body-background: var(--blue-700);
   };
 }
@@ -28,7 +29,7 @@
   box-shadow: 0px 2px 7px 2px var(--body-main-shadow-color);
   border-radius: var(--body-main-corner-radius);
 
-  @include mixins.forDevice(default) {
+  @include utils.forDevice(default) {
     --body-main-height: 864px;
     --body-main-width: 1368px;
     --body-main-margin: auto;
@@ -37,7 +38,7 @@
     --body-main-corner-radius: 10px;
   }
 
-  @include mixins.forDevice(laptop) {
+  @include utils.forDevice(laptop) {
     --body-main-height: 100vh;
     --body-main-width: 100%;
     --body-main-margin: 0;
@@ -45,24 +46,24 @@
     --body-main-corner-radius: 0;
   }
 
-  @include mixins.forDevice(mobile) {
+  @include utils.forDevice(mobile) {
     --body-main-display: flex;
   }
 
-  @include mixins.forDevice(tablet) {
+  @include utils.forDevice(tablet) {
     --body-main-overflow: none;
   }
 
-  @include mixins.forDevice(mobile) {
+  @include utils.forDevice(mobile) {
     --body-main-overflow: auto;
   }
 
-  @include mixins.forTheme(light) {
+  @include utils.forTheme(light) {
     --body-main-background: var(--crystal);
     --body-main-shadow-color: var(--silver-300);
   }
 
-  @include mixins.forTheme(dark) {
+  @include utils.forTheme(dark) {
     --body-main-background:var(--blue-800);
     --body-main-shadow-color: var(--blue-800);
   }

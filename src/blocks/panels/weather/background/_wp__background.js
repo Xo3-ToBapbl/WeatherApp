@@ -11,7 +11,10 @@ export function TodayWeatherImageModel(builderConstructor) {
   return model;
 
   function updateData(todayForecast) {
-    this.imgElement.src = imageRepository.getImageData(todayForecast.imageCode).image;
+    if (todayForecast) {
+      this.imgElement.src = imageRepository.getImageData(todayForecast.imageCode).image;
+    }
+    
     toggleLoaderFor(this);
   }
   

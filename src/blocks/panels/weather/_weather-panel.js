@@ -2,6 +2,7 @@ import "./toolbar/_wp__toolbar";
 import {TodayWeatherImageModel} from "./background/_wp__background";
 import {TodayTemperatureModel} from "./temperature/_wp__temperature";
 import {TodayWeatherDescriptionModel} from "./description/_wp__description";
+import {LocationModel} from "./location/_wp__location";
 export {setTodayDate} from "./date/_wp__today-date";
 
 export function WeatherPanelModel(builderConstructor) {
@@ -11,7 +12,9 @@ export function WeatherPanelModel(builderConstructor) {
     .loadable(showLoader)
     .build();
   
-  model.innerModels = [
+  model.updateLocation = updateLocation;
+  model.locationModel = new LocationModel(builderConstructor);
+  model.innerWeatherModels = [
     new TodayWeatherImageModel(builderConstructor),
     new TodayTemperatureModel(builderConstructor),
     new TodayWeatherDescriptionModel(builderConstructor),
@@ -22,10 +25,14 @@ export function WeatherPanelModel(builderConstructor) {
   function updateData() {
     const forecasts = [...event.detail];
     const todayForecast = forecasts[0];
-    this.innerModels.forEach((model) => model.updateData(todayForecast));
+    this.innerWeatherModels.forEach((model) => model.updateData(todayForecast));
+  }
+
+  function updateLocation(name) {
+    this.locationModel.updateData(name);
   }
   
   function showLoader() {
-    this.innerModels.forEach((model) => model.showLoader());
+    this.innerWeatherModels.forEach((model) => model.showLoader());
   }
 }

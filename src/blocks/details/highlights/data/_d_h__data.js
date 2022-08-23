@@ -26,10 +26,12 @@ export const dataModels = (() => {
       return model;
     
       function updateData(todayForecast) {
-        updateDataFor(this, todayForecast.wind)
-    
-        const directionTextNode = [...this.direction.childNodes].find((node) => node.nodeName == "#text");
-        directionTextNode.textContent = todayForecast.windDirection;
+        if (todayForecast) {
+          updateDataFor(this, todayForecast.wind)
+      
+          const directionTextNode = [...this.direction.childNodes].find((node) => node.nodeName == "#text");
+          directionTextNode.textContent = todayForecast.windDirection;
+        }
     
         this.toggleLoader();
       }
@@ -57,9 +59,12 @@ export const dataModels = (() => {
       return model;
     
       function updateData(todayForecast) {
-        updateDataFor(this, todayForecast.humidity);
+        if (todayForecast) {
+          updateDataFor(this, todayForecast.humidity);
+
+          this.progressValue.style.width = `${todayForecast.humidity}%`;
+        }
     
-        this.progressValue.style.width = `${todayForecast.humidity}%`;
     
         toggleLoaderFor(this);
       }
@@ -81,7 +86,9 @@ export const dataModels = (() => {
       return model;
     
       function updateData(todayForecast) {
-        updateDataFor(this, todayForecast.visibility);
+        if (todayForecast) {
+          updateDataFor(this, todayForecast.visibility);
+        }
         toggleLoaderFor(this);
       }
       
@@ -102,7 +109,9 @@ export const dataModels = (() => {
       return model;
     
       function updateData(todayForecast) {
-        updateDataFor(this, todayForecast.airPressure);
+        if (todayForecast) {
+          updateDataFor(this, todayForecast.airPressure);
+        }
         toggleLoaderFor(this);
       }
       

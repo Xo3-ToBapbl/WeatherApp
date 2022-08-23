@@ -1,57 +1,58 @@
-import {makeCancelable} from "$utils/_utils.js"
+import { requestExecutor } from "$lib/system/_request"; 
 
 export const weatherService =(() => {
-
-  let previousPromise = null;
+  let host = "";
+  let abortController = null;
+  let eventTarget = new EventTarget();
 
   return {
-    host: "",
-    eventTarget: new EventTarget(),
+    eventTarget: eventTarget,
     
-    initialize(config) {
-      this.host = config.host;
-      this.requestWeatherData(51.50853, -0.12574, false);
+    initialize(config, initialCoords) {
+      host = config.host;
+      this.requestWeatherData(initialCoords.latitude, initialCoords.longitude, false);
     },
     
-    requestWeatherData(latitude, longitude, cancelPrevious) {
-      cancelPrevious ??= true;
-      if (cancelPrevious && previousPromise) {
-        previousPromise.cancel();
-      }
+    async requestWeatherData(latitude, longitude, abortPrevious) {
+      abortIf(abortPrevious);
+      abortController = new AbortController();
   
-      previousPromise = makeCancelable(getWeatherData.call(this, latitude, longitude));
-      previousPromise.promise
-        .then((result) => raiseResult.call(this, result))
-        .catch(logError);
-  
-      function raiseResult(result) {
-        let eventToDispatch = new CustomEvent("weatherDataReceived", {detail: result});
-        this.eventTarget.dispatchEvent(eventToDispatch);
-      }
-  
-      function logError(error) {
-        if (error.isCanceled) {
-          console.log("WeatherService.requestWeatherData: operation cancelled")
-        } else {
-          console.log(`WeatherService: ${error}`)
-        }
-      }
+      const url = `${host}/weather/forecast?latitude=${latitude}&longitude=${longitude}`;
+      const params = { method: "GET", signal: abortController.signal };
+      const request = fetch(url, params);
+      const response = await requestExecutor.execute(request);
+
+      response.handle(
+        function success(response) { raiseResult(response.result); },
+        function failed(response) { raiseError(response.error); raiseResult([]) },
+        function aborted() { console.log("SearchService.requestCityData: operation aborted"); },
+      );
     },
   };
+
+  function abortIf(abortPrevious) {
+    abortPrevious ??= true;
+
+    if (abortPrevious && abortController) {
+      abortController.abort();
+    }
+  }
         
-  function getWeatherData(latitude, longitude) {
-    return new Promise(async (resolve, _) => {
+  function raiseResult(result) {
+    let weatherModels = result.map(data => {
+      data.wind = data.wind.toFixed(1);
+      data.visibility = data.visibility.toFixed(1);
+      return data;
+    })
+    let eventToDispatch = new CustomEvent("weatherDataReceived", {detail: weatherModels});
+    eventTarget.dispatchEvent(eventToDispatch);
+  }
 
-      let response = await fetch(`${this.host}/weather/forecast?latitude=${latitude}&longitude=${longitude}`, { method: "GET" });
-      let weatherData = await response.json();
-      let weatherModels = weatherData.result.map(data => {
-        data.wind = data.wind.toFixed(1);
-        data.visibility = data.visibility.toFixed(1);
-        return data;
-      })
+  function raiseError(error) {
+    console.log(`WeatherService: ${error}`);
 
-      resolve(weatherModels);
-    });
+    let eventToDispatch = new CustomEvent("showError", {detail: "Error appeared during fetching weather data. Please, reload page."});
+    eventTarget.dispatchEvent(eventToDispatch);
   }
 
 })();

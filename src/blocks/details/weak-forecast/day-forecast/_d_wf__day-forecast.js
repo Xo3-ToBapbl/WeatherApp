@@ -28,9 +28,11 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
   function updateData(forecast) {
     this.toggleLoader();
 
-    this.img.src = imageRepository.getImageData(forecast.imageCode).image;
-    this.maxTemperature.innerText = getFormattedTemperature(forecast.maxTemperature, "celsius");
-    this.minTemperature.innerText = getFormattedTemperature(forecast.minTemperature, "celsius");;
+    if (forecast) {
+      this.img.src = imageRepository.getImageData(forecast.imageCode).image;
+      this.maxTemperature.innerText = getFormattedTemperature(forecast.maxTemperature, "celsius");
+      this.minTemperature.innerText = getFormattedTemperature(forecast.minTemperature, "celsius");;
+    }
   }
   
   function showLoader() {

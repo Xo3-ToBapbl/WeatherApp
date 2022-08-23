@@ -10,7 +10,10 @@ export function TodayTemperatureModel(builderConstructor) {
   return model;
 
   function updateData(todayForecast) {
-    this.valueElement.innerText = todayForecast.maxTemperature;
+    if (todayForecast) {
+      this.valueElement.innerText = todayForecast.maxTemperature;
+    }
+
     toggleLoaderFor(model);
   }
   

@@ -10,7 +10,7 @@ export function throttle(func, threshhold, scope) {
 
     if (last && now < last + threshhold) {
       clearTimeout(deferTimer);
-      deferTimer = setTimeout(() => {last = now; func.apply(context, args);}, threshhold);
+      deferTimer = setTimeout(() => { last = now; func.apply(context, args); }, threshhold);
     } else {
       last = now;
       func.apply(context, args);

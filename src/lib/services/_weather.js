@@ -1,4 +1,5 @@
-import { requestExecutor } from "$lib/system/_request"; 
+import { requestExecutor } from "$lib/system/_request";
+import { searchService } from "./_search";
 
 export const weatherService =(() => {
   let host = "";
@@ -8,27 +9,41 @@ export const weatherService =(() => {
   return {
     eventTarget: eventTarget,
     
-    initialize(config, initialCoords) {
+    initialize(config, defaultCity) {
       host = config.host;
-      this.requestWeatherData(initialCoords.latitude, initialCoords.longitude, false);
+      requestWeatherDataByCoords(defaultCity.lat, defaultCity.lng, false);
     },
     
-    async requestWeatherData(latitude, longitude, abortPrevious) {
-      abortIf(abortPrevious);
-      abortController = new AbortController();
-  
-      const url = `${host}/weather/forecast?latitude=${latitude}&longitude=${longitude}`;
-      const params = { method: "GET", signal: abortController.signal };
-      const request = fetch(url, params);
-      const response = await requestExecutor.execute(request);
+    async requestWeatherData(placeId, abortPrevious) {
+      try {
 
-      response.handle(
-        function success(response) { raiseResult(response.result); },
-        function failed(response) { raiseError(response.error); raiseResult([]) },
-        function aborted() { console.log("SearchService.requestCityData: operation aborted"); },
-      );
+        const citiesModel = await searchService.requestCityModelByPlaceId(placeId);
+        if (citiesModel) {
+          requestWeatherDataByCoords(citiesModel.lat, citiesModel.lng, abortPrevious);
+        }
+
+      } catch (error) {
+        raiseError(error);
+      }
     },
   };
+
+
+  async function requestWeatherDataByCoords(lat, lng, abortPrevious) {
+    abortIf(abortPrevious);
+    abortController = new AbortController();
+
+    const url = `${host}/weather/forecast?latitude=${lat}&longitude=${lng}`;
+    const params = { method: "GET", signal: abortController.signal };
+    const request = fetch(url, params);
+    const response = await requestExecutor.execute(request);
+
+    response.handle(
+      function success(response) { raiseResult(response.result); },
+      function failed(response) { raiseError(response.error); raiseResult([]) },
+      function aborted() { console.log("SearchService.requestCityData: operation aborted"); },
+    );
+  }
 
   function abortIf(abortPrevious) {
     abortPrevious ??= true;

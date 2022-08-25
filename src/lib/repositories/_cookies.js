@@ -1,4 +1,20 @@
 export const cookiesRepository = {
+  getCachedModel() {
+    return {
+      cityName: cookiesRepository.get("cityName") ?? "London",
+      placeId: cookiesRepository.get("placeId") ?? "ChIJdd4hrwug2EcRmSrV3Vo6llI",
+      lat: cookiesRepository.get("lat") ?? 51.5072178,
+      lng: cookiesRepository.get("lng") ?? -0.1275862,
+    };
+  },
+
+  setCachedModel(model) {
+    cookiesRepository.set("cityName", model.cityName);
+    cookiesRepository.set("placeId", model.placeId);
+    cookiesRepository.set("lat", model.lat);
+    cookiesRepository.set("lng", model.lng);
+  },
+
   get(name) {
     let matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"

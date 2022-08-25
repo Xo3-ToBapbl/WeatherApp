@@ -28,8 +28,8 @@ export function WeatherPanelModel(builderConstructor) {
     this.innerWeatherModels.forEach((model) => model.updateData(todayForecast));
   }
 
-  function updateLocation(name) {
-    this.locationModel.updateData(name);
+  function updateLocation(cityName) {
+    this.locationModel.updateData(cityName);
   }
   
   function showLoader() {

@@ -31,8 +31,8 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
 
     if (forecast) {
       this.img.src = imageRepository.getImageData(forecast.imageCode).image;
-      this.maxTemperature.innerText = utils.getFormattedTemperature(forecast.maxTemperature, "celsius");
-      this.minTemperature.innerText = utils.getFormattedTemperature(forecast.minTemperature, "celsius");;
+      this.maxTemperature.innerText = utils.getFormattedTemperature(forecast.maxTemperature, forecast.temperatureUnits);
+      this.minTemperature.innerText = utils.getFormattedTemperature(forecast.minTemperature, forecast.temperatureUnits);
     }
   }
   
@@ -50,9 +50,15 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
   function updateTemperatureUnit(unit) {
     const oldMaxValue = Number.parseFloat(this.maxTemperature.innerText);
     const oldMinValue = Number.parseFloat(this.minTemperature.innerText);
-    const isCelsius = unit === "celsius";
-    const newMaxValue = isCelsius ? utils.getCelsius(oldMaxValue) : utils.getFahrenheit (oldMaxValue);
-    const newMinValue = isCelsius ? utils.getCelsius(oldMinValue) : utils.getFahrenheit (oldMinValue);
+    
+    let newMaxValue = "t";
+    let newMinValue = "t";
+    
+    if (!Number.isNaN(oldMaxValue) && !Number.isNaN(oldMinValue)) {
+      const isCelsius = unit === "celsius";
+      newMaxValue = isCelsius ? utils.getCelsius(oldMaxValue) : utils.getFahrenheit (oldMaxValue);
+      newMinValue = isCelsius ? utils.getCelsius(oldMinValue) : utils.getFahrenheit (oldMinValue);
+    }
 
     this.maxTemperature.innerText = utils.getFormattedTemperature(newMaxValue, unit);
     this.minTemperature.innerText = utils.getFormattedTemperature(newMinValue, unit);;

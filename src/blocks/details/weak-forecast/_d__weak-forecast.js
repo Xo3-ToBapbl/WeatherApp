@@ -16,7 +16,7 @@ export function WeekForecastModel(builderConstructor) {
   return model;
 
   function updateData() {
-    const forecast = event.detail;
+    let forecast = event.detail;
     this.forecastModels.forEach((model, index) => model.updateData(forecast[index + 1]));
   }
   

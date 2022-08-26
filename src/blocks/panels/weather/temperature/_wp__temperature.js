@@ -15,6 +15,7 @@ export function TodayTemperatureModel(builderConstructor) {
   function updateData(todayForecast) {
     if (todayForecast) {
       this.valueElement.innerText = todayForecast.maxTemperature;
+      this.unitElement.innerText = todayForecast.temperatureUnits === "celsius" ? "°C" : "°F";
     }
 
     toggleLoaderFor(model);
@@ -29,12 +30,16 @@ export function TodayTemperatureModel(builderConstructor) {
   }
 
   function updateTemperatureUnit(unit) {
-    const oldValue = Number.parseFloat(this.valueElement.innerText);
     const isCelsius = unit === "celsius";
-    const newValue = isCelsius ? utils.getCelsius(oldValue) : utils.getFahrenheit (oldValue);
     const newUnit = isCelsius ? "°C" : "°F";
-
-    this.valueElement.innerText = newValue;
     this.unitElement.innerText = newUnit;
+    
+    const oldValue = Number.parseFloat(this.valueElement.innerText);
+    if (Number.isNaN(oldValue)) {
+      return;
+    }
+    
+    const newValue = isCelsius ? utils.getCelsius(oldValue) : utils.getFahrenheit (oldValue);
+    this.valueElement.innerText = newValue;
   }
 }

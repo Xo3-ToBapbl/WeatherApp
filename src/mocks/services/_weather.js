@@ -1,3 +1,6 @@
+import { cookiesRepository } from "$lib/repositories/_cookies";
+import * as utils from "$utils/_utils.js";
+
 export const weatherService = (() => {
   const weatherData = [
     {
@@ -77,7 +80,19 @@ export const weatherService = (() => {
 
     requestWeatherData() {
       setTimeout(() => {
-        let eventToDispatch = new CustomEvent("weatherDataReceived", {detail: weatherData});
+        let weatherModels = structuredClone(weatherData);
+        let units = cookiesRepository.get("temperatureUnits") ?? "celsius";
+        if (units === "fahrenheit") {
+          weatherModels = weatherModels.map(model => {
+              model.maxTemperature = utils.getFahrenheit(model.maxTemperature);
+              model.minTemperature = utils.getFahrenheit(model.minTemperature);
+              model.temperatureUnits = units;
+              
+              return model;
+          }); 
+        }
+
+        let eventToDispatch = new CustomEvent("weatherDataReceived", {detail: weatherModels});
         this.eventTarget.dispatchEvent(eventToDispatch);
       }, 1000)
     }

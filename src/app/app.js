@@ -41,6 +41,7 @@ window.initGoogleMap = function () {
       
       setTodayDate();
       setTheme();
+      setTemperatureUnits();
     };
 
     function initializeListeners() {
@@ -86,6 +87,13 @@ window.initGoogleMap = function () {
       document.dispatchEvent(eventToDispatch);
     }
 
+    function setTemperatureUnits() {
+      const units = cookiesRepository.get("temperatureUnits") ?? "celsius";
+
+      let eventToDispatch = new CustomEvent("setTemperatureUnits",  {bubbles: true, cancelable: true, detail: units})
+      document.dispatchEvent(eventToDispatch);
+    }
+
     function initializeServices(config) {
       const defaultCity = cookiesRepository.getCachedModel();
       this.weatherPanelModel.updateLocation(defaultCity.cityName);
@@ -106,6 +114,8 @@ window.initGoogleMap = function () {
   
     function _switchTemperatureUnit() {
       const unit = event.detail.temperatureUnit;
+      cookiesRepository.set("temperatureUnits", unit);
+
       this.weatherPanelModel.updateTemperatureUnit(unit);
       this.weekForecast.updateTemperatureUnit(unit);
     }

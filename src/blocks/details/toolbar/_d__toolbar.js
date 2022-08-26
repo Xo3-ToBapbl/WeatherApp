@@ -1,6 +1,7 @@
 (()=> {
   
   document.addEventListener("setTheme", setTheme);
+  document.addEventListener("setTemperatureUnits",  setTemperatureUnits);
 
   const themeButtonToggler = new ButtonToggler(".d__theme-mode-button", "switchTheme");
   const temperatureButtonToggler = new ButtonToggler(".d__temperature-unit-button", "switchTemperatureUnits");
@@ -8,6 +9,12 @@
   function setTheme() {
     const theme = event.detail;
     const button = themeButtonToggler.toggleButtons.find(button => button.dataset.theme === theme);
+    button.click();
+  }
+
+  function setTemperatureUnits() {
+    const units = event.detail;
+    const button = temperatureButtonToggler.toggleButtons.find(button => button.dataset.temperatureUnit === units);
     button.click();
   }
 

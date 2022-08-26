@@ -1,0 +1,10 @@
+@use "$utils/utils";
+
+.wp__description {
+  @include utils.flex-center;
+
+  flex-grow: 1;
+  letter-spacing: 0.15rem;
+  font-size: var(--middle-text);
+  font-weight: 600;
+}

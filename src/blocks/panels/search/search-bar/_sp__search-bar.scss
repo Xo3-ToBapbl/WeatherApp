@@ -1,0 +1,35 @@
+@use "$utils/utils";
+@use "$blocks/panels/base/base-buttons";
+
+.sp__search-bar {
+  display: flex;
+  gap: var(--contentOffset);
+  justify-content: space-between;
+}
+  
+.sp__search-input {
+  width: 100%;
+  font-family: raleway, sans-serif;
+  font-size: var(--regular-text);
+  padding: 0 15px;
+  border: 2px solid var(--gray-400);
+  border-radius: var(--small-radius);
+  background-color: transparent;
+
+  &:placeholder {
+    color: var(--gray-400);
+    opacity: 1;
+    font-weight: 100;
+  }
+}
+
+.sp__search-input:focus {
+  outline: 0.1px solid var(--gray-400);
+  font-weight: bold;
+}
+
+.sp__swap-panel-button {
+  @include base-buttons.panel-circle-button;
+
+  flex: 0 0 var(--toolbar-height);
+}

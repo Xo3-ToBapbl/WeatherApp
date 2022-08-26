@@ -1,0 +1,77 @@
+@use "$utils/utils";
+@use "$lib/lib";
+
+.d__toolbar-container {
+  position: sticky;
+  top: var(--details-toolbar-sticky-top-offset);
+  height: var(--toolbar-height);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+
+  @include utils.forDevice(default) {
+    --details-toolbar-sticky-top-offset: 0;
+  }
+  
+  @include utils.forDevice(mobile) {
+    --details-toolbar-sticky-top-offset: calc(0.5 * var(--contentOffset));
+  }
+}
+
+.d__menu-bar, .d__temperature-unit-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: calc(0.5 * var(--toolbar-height));
+}
+
+.d__menu-button {
+  display: var(--menu-button-display) !important;
+
+  @include utils.forDevice(default) {
+    --menu-button-display: none;
+  }
+
+  @include utils.forDevice(tablet) {
+    --menu-button-display: inline;
+  }
+  
+  @include utils.forDevice(mobile) {
+    --menu-button-display: none;
+  }
+}
+
+.d__menu-button, 
+.d__theme-mode-button, 
+.d__temperature-unit-button {
+  @include lib.base-button;
+  @include lib.circle-button;
+
+  width: var(--toolbar-height);
+  height: var(--toolbar-height);
+  color: var(--blue-500);
+  background-color: var(--crystal);
+  border: 1px solid var(--details-toolbar-button-border);
+  font-size: 2.2rem;
+}
+
+@include utils.forTheme(light) {
+  --details-toolbar-button-border: var(--silver-100);
+}
+
+@include utils.forTheme(dark) {
+  --details-toolbar-button-border: var(--blue-600);
+}
+
+.d__temperature-unit-button {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.d__theme-mode-button[data-toggled='true'], 
+.d__temperature-unit-button[data-toggled='true'] {
+  background-color: var(--blue-400);
+  color: var(--crystal);
+}

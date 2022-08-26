@@ -1,0 +1,11 @@
+@forward "data/d_h__data";
+
+@use "$blocks/details/base/base-section";
+@use "$utils/utils";
+
+.d__highlights {
+  @include base-section.details-section;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+}

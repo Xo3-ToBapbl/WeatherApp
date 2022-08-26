@@ -1,12 +1,12 @@
 {
-  "envName": "dev",
+  "envName": "mock",
   "mode": "development",
-  "host": "http://localhost:80",
+  "host": "none",
   "entryPath": "./src/app/app.pug",
   "distPath": "dist/dev/",
   "devtool": "inline-source-map",
   "outputScriptsPath": "scripts/[name].js",
   "assetsPath": "resources/[name][ext]",
   "stylesPath": "styles/[name].css",
-  "servicesSource": "lib"
+  "servicesSource": "mocks"
 }

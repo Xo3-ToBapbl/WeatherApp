@@ -1,0 +1,25 @@
+@use "$lib/lib";
+@use "$utils/utils";
+
+@mixin panel-button {
+  @include lib.base-button;
+
+  color: var(--crystal);
+  background-color: var(--panel-button-background);
+}
+
+@include utils.forTheme(light) {
+  --panel-button-background: var(--gray-400);
+}
+
+@include utils.forTheme(dark) {
+  --panel-button-background: var(--gray-500);
+}
+
+@mixin panel-circle-button {
+  @include panel-button;
+  @include lib.circle-button;
+
+  width: var(--toolbar-height);
+  height: var(--toolbar-height);
+}

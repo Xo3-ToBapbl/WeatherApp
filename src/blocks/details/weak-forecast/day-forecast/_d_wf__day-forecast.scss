@@ -1,0 +1,40 @@
+@use "$utils/utils";
+@use "$blocks/details/base/base-forecast";
+
+.d_wf__day-forecast {
+  @include base-forecast.forecast-card;
+
+  min-width: 13rem;
+  min-height: 20rem;
+}
+
+.d_wf__day-forecast-title {
+  font-size: var(--regular-text);
+  font-weight: bold;
+  text-align: center;
+}
+
+.d_wf__day-forecast-image {
+  width: 75px;
+  height: 80px;
+  align-self: center;
+  object-fit: contain;
+}
+
+.d_wf__day-forecast-temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--contentOffset);
+  width: 100%;
+}
+
+.d_wf__day-forecast-max-temperature, 
+.d_wf__day-forecast-min-temperature {
+  font-size: var(--regular-text);
+  font-weight: bold;
+}
+
+.d_wf__day-forecast-unit {
+  font-size: var(--small-text);
+}

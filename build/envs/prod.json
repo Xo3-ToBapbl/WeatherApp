@@ -1,9 +1,12 @@
 {
+  "envName": "prod",
   "mode": "production",
-  "entryPath": "./src/htmls/index.pug",
+  "host": "https://weatherappserver-web-ukg2v46doq-lm.a.run.app:443",
+  "entryPath": "./src/app/app.pug",
   "distPath": "dist/prod/",
   "devtool": false,
   "outputScriptsPath": "scripts/[name].[contenthash:8].js",
-  "assetsPath": "resources/images/[name].[contenthash:8][ext]",
-  "stylesPath": "styles/[name].[contenthash:8].css"
+  "assetsPath": "resources/[name].[contenthash:8][ext]",
+  "stylesPath": "styles/[name].[contenthash:8].css",
+  "servicesSource": "lib"
 }

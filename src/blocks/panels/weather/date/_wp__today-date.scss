@@ -1,0 +1,13 @@
+@use "$blocks/panels/base/base-panel";
+@use "$utils/utils";
+@use "$lib/lib";
+
+.wp__today-date-container {
+  @include utils.flex-center;
+  flex: 0 0 5rem;
+}
+
+.wp__today-date {
+  margin: 0 5px;
+  font-size: var(--regular-text);
+}

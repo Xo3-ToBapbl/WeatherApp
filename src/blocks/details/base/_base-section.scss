@@ -1,0 +1,13 @@
+@use "$utils/utils";
+
+@mixin details-section {
+  gap: calc(var(--details-section-grid-gap-ratio) * var(--contentOffset));
+
+  @include utils.forDevice(default) {
+    --details-section-grid-gap-ratio: 1;
+  }
+  
+  @include utils.forDevice(mobile) {
+    --details-section-grid-gap-ratio: 0.5;
+  }
+}

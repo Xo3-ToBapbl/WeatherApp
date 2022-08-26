@@ -1,0 +1,13 @@
+@use "$utils/styles/_mixins.scss";
+
+.grid-child-layout {
+  grid-area: var(--grid-child-layout-area);
+
+  @include mixins.forDevice(default) {
+    --grid-child-layout-area: auto;
+  }
+
+  @include mixins.forDevice(tablet) {
+    --grid-child-layout-area: stacked;
+  }
+}

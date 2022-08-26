@@ -1,3 +1,3 @@
-export const firebaseService ={
+export const firebaseService = {
   initialize() { }
-} 
+}

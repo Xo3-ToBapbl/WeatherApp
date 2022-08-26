@@ -36,14 +36,16 @@ window.initGoogleMap = function () {
     this.highlights = new blocks.HighlightsModel(ForecastModelBuilder);
     
     this.initialize = function initialize() {
-      setTodayDate();
       initializeListeners.call(this);
       initializeServices.call(this, config);
+      
+      setTodayDate();
+      setTheme();
     };
 
     function initializeListeners() {
       document.addEventListener("switchTheme", _switchTheme);
-      document.addEventListener("switchTemperatureUnits", _switchTemperatureUnit);
+      document.addEventListener("switchTemperatureUnits", _switchTemperatureUnit.bind(this));
       document.addEventListener("showNotification", this.notificationModel.openNotification.bind(this.notificationModel));
       document.addEventListener("citySelected", (e) => this.weatherPanelModel.updateLocation(e.detail.cityName));
       document.addEventListener("requestCityData", (e) => searchService.requestCityData.call(searchService, e.detail));
@@ -77,6 +79,13 @@ window.initGoogleMap = function () {
       blocks.setTodayDate(utils.getFormattedDate(new Date(Date.now())));
     }
 
+    function setTheme() {
+      const theme = cookiesRepository.get("theme") ?? "dark";
+
+      let eventToDispatch = new CustomEvent("setTheme",  {bubbles: true, cancelable: true, detail: theme})
+      document.dispatchEvent(eventToDispatch);
+    }
+
     function initializeServices(config) {
       const defaultCity = cookiesRepository.getCachedModel();
       this.weatherPanelModel.updateLocation(defaultCity.cityName);
@@ -89,11 +98,16 @@ window.initGoogleMap = function () {
     }
     
     function _switchTheme() {
-      document.documentElement.setAttribute("data-theme", event.detail.theme);
+      const theme = event.detail.theme;
+      cookiesRepository.set("theme", theme);
+
+      document.documentElement.setAttribute("data-theme", theme);
     }
   
     function _switchTemperatureUnit() {
-      console.log("Temperature units switched");
+      const unit = event.detail.temperatureUnit;
+      this.weatherPanelModel.updateTemperatureUnit(unit);
+      this.weekForecast.updateTemperatureUnit(unit);
     }
   }
 

@@ -7,6 +7,8 @@ export function WeekForecastModel(builderConstructor) {
     .loadable(showLoader)
     .build();
 
+  model.updateTemperatureUnit = updateTemperatureUnit;
+
   const forecastElements = document.querySelectorAll(".d_wf__day-forecast");
   model.forecastModels = [...forecastElements].map((element, index) => {
     return new DayForecastModel(builderConstructor, element, index + 1);
@@ -20,5 +22,9 @@ export function WeekForecastModel(builderConstructor) {
   
   function showLoader() {
     this.forecastModels.forEach((model) => model.showLoader());
+  }
+
+  function updateTemperatureUnit(unit) {
+    this.forecastModels.forEach((model) => model.updateTemperatureUnit(unit));
   }
 }

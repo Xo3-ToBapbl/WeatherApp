@@ -13,10 +13,12 @@ export function WeatherPanelModel(builderConstructor) {
     .build();
   
   model.updateLocation = updateLocation;
+  model.updateTemperatureUnit = updateTemperatureUnit;
   model.locationModel = new LocationModel(builderConstructor);
+  model.temperatureModel = new TodayTemperatureModel(builderConstructor),
   model.innerWeatherModels = [
     new TodayWeatherImageModel(builderConstructor),
-    new TodayTemperatureModel(builderConstructor),
+    model.temperatureModel,
     new TodayWeatherDescriptionModel(builderConstructor),
   ];
 
@@ -34,5 +36,9 @@ export function WeatherPanelModel(builderConstructor) {
   
   function showLoader() {
     this.innerWeatherModels.forEach((model) => model.showLoader());
+  }
+
+  function updateTemperatureUnit(unit) {
+    this.temperatureModel.updateTemperatureUnit(unit);
   }
 }

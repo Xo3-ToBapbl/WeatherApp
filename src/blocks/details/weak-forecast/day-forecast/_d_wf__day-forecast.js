@@ -1,6 +1,6 @@
 import { imageRepository } from "$lib/repositories/_image";
 import { getFormattedDate } from "$utils/_utils";
-import { getFormattedTemperature } from "$utils/_utils";
+import * as utils from "$utils/_utils.js";
 
 export function DayForecastModel(builderConstructor, container, dayIndex) {
   const builder = new builderConstructor();
@@ -12,6 +12,7 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
   model.title = container.querySelector(".d_wf__day-forecast-title");
   setDate(model.title, dayIndex);
   
+  model.updateTemperatureUnit = updateTemperatureUnit;
   model.img = container.querySelector(".d_wf__day-forecast-image");
   model.maxTemperature = container.querySelector(".d_wf__day-forecast-max-temperature");
   model.minTemperature = container.querySelector(".d_wf__day-forecast-min-temperature");
@@ -30,8 +31,8 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
 
     if (forecast) {
       this.img.src = imageRepository.getImageData(forecast.imageCode).image;
-      this.maxTemperature.innerText = getFormattedTemperature(forecast.maxTemperature, "celsius");
-      this.minTemperature.innerText = getFormattedTemperature(forecast.minTemperature, "celsius");;
+      this.maxTemperature.innerText = utils.getFormattedTemperature(forecast.maxTemperature, "celsius");
+      this.minTemperature.innerText = utils.getFormattedTemperature(forecast.minTemperature, "celsius");;
     }
   }
   
@@ -44,5 +45,16 @@ export function DayForecastModel(builderConstructor, container, dayIndex) {
     this.img.classList.toggle("loader");
     this.maxTemperature.classList.toggle("loader");
     this.minTemperature.classList.toggle("loader");
+  }
+
+  function updateTemperatureUnit(unit) {
+    const oldMaxValue = Number.parseFloat(this.maxTemperature.innerText);
+    const oldMinValue = Number.parseFloat(this.minTemperature.innerText);
+    const isCelsius = unit === "celsius";
+    const newMaxValue = isCelsius ? utils.getCelsius(oldMaxValue) : utils.getFahrenheit (oldMaxValue);
+    const newMinValue = isCelsius ? utils.getCelsius(oldMinValue) : utils.getFahrenheit (oldMinValue);
+
+    this.maxTemperature.innerText = utils.getFormattedTemperature(newMaxValue, unit);
+    this.minTemperature.innerText = utils.getFormattedTemperature(newMinValue, unit);;
   }
 }

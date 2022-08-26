@@ -25,6 +25,7 @@ export const cookiesRepository = {
   set(name, value, options = {}) {
     options = {
       path: '/',
+      expires: new Date(Date.now() + 259200e3),
       ...options
     };
   

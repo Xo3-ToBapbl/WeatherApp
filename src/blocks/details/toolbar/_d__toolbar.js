@@ -1,7 +1,15 @@
 (()=> {
   
-  new ButtonToggler(".d__theme-mode-button", "switchTheme");
-  new ButtonToggler(".d__temperature-unit-button", "switchTemperatureUnits");
+  document.addEventListener("setTheme", setTheme);
+
+  const themeButtonToggler = new ButtonToggler(".d__theme-mode-button", "switchTheme");
+  const temperatureButtonToggler = new ButtonToggler(".d__temperature-unit-button", "switchTemperatureUnits");
+
+  function setTheme() {
+    const theme = event.detail;
+    const button = themeButtonToggler.toggleButtons.find(button => button.dataset.theme === theme);
+    button.click();
+  }
 
   function ButtonToggler(selector, eventName) {
     this.eventName = eventName;
